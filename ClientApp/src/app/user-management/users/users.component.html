@@ -2,6 +2,7 @@
 
 <p *ngIf="!model"><em>Loading...</em></p>
 
+<button *ngIf="model" type="button" (click)="createNew()">Create New</button>
 <table class='table' *ngIf="model">
   <thead>
     <tr>

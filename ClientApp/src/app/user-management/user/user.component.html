@@ -15,12 +15,21 @@
         <input type="text" class="form-comtrol" [(ngModel)]="user.lastName" required>
     </div>
     <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-comtrol" [(ngModel)]="user.password" required>
+    </div>
+    <div class="form-group">
         <label>Role</label>
         <select class="form-control" [(ngModel)]="user.role" required>
             <option *ngFor="let role of ['HR', 'TeamLead']" [value]="role">{{role}}</option>
         </select>
     </div>
+    <div class="form-group">
+        <label>Blocked</label>
+        <input type="checkbox" class="form-control" [(ngModel)]="user.isBlocked">
+    </div>
     <div>
-        <button type="button" (click)="update()">Update</button>
+        <button type="button" (click)="submit()">{{buttonText}}</button>
+        <button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>

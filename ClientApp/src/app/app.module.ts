@@ -6,24 +6,25 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { SearchUsersComponent } from './user-management/search-users/search-users.component';
-import { EditUserComponent } from './user-management/edit-user/edit-user.component';
+import { UsersComponent } from './user-management/users/users.component';
+import { UserComponent } from './user-management/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    SearchUsersComponent,
-    EditUserComponent
+    UsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: SearchUsersComponent, pathMatch: 'full' },
-      { path: 'users', component: SearchUsersComponent },
-      { path: 'user/:id', component: EditUserComponent },
+      { path: '', component: UsersComponent, pathMatch: 'full' },
+      { path: 'users', component: UsersComponent },
+      { path: 'user/:id', component: UserComponent },
+      { path: 'user', component: UserComponent },
     ])
   ],
   providers: [],

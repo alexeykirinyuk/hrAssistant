@@ -13,5 +13,5 @@ export class User
 
     public password: string;
 
-    public isBlocked: string;
+    public isBlocked: boolean;
 }
