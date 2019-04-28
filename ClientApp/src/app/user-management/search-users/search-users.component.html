@@ -1,0 +1,22 @@
+<h1>User Management</h1>
+
+<p *ngIf="!model"><em>Loading...</em></p>
+
+<table class='table' *ngIf="model">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Display Name</th>
+      <th>Role</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of model.items">
+      <td><a [routerLink]="['/user', user.userId]">{{ user.username }}</a></td>
+      <td>{{ user.displayName }}</td>
+      <td>{{ user.role }}</td>
+      <td>{{ user.blocked ? "Blocked" : "Active" }}</td>
+    </tr>
+  </tbody>
+</table>

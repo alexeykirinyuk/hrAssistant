@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "b544d65d-158e-4409-b779-0245a7d06f76",
+		"name": "HRAssistant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7524cb19-2b12-4065-891d-330d184d93b6",
+						"exec": [
+							"pm.globals.set(\"userId\", pm.response.json()[\"userId\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"User\": {\n\t\t\"Username\": \"kkoreneva\",\n\t\t\"FirstName\": \"Kristina\",\n\t\t\"LastName\": \"Koreneva\",\n\t\t\"Role\": \"TeamLead\",\n\t\t\"Password\": \"admin\",\n\t\t\"IsBlocked\": \"false\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{base-url}}/api/user",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base-url}}/api/user/{{userId}}",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base-url}}/api/user?",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"api",
+						"user"
+					],
+					"query": [
+						{
+							"key": "displayName",
+							"value": "Alexey",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "kiri",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "HR",
+							"disabled": true
+						},
+						{
+							"key": "onePageItemsCount",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "pageIndex",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
