@@ -2,22 +2,24 @@
 
 <p *ngIf="!model"><em>Loading...</em></p>
 
-<button *ngIf="model" type="button" (click)="createNew()">Create New</button>
-<table class='table' *ngIf="model">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Display Name</th>
-      <th>Role</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of model.items">
-      <td><a [routerLink]="['/user', user.userId]">{{ user.username }}</a></td>
-      <td>{{ user.displayName }}</td>
-      <td>{{ user.role }}</td>
-      <td>{{ user.blocked ? "Blocked" : "Active" }}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="model">
+  <button type="button" (click)="createNew()">Create New</button>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Display Name</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of model.items">
+        <td><a [routerLink]="['/user', user.userId]">{{ user.username }}</a></td>
+        <td>{{ user.displayName }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.blocked ? "Blocked" : "Active" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

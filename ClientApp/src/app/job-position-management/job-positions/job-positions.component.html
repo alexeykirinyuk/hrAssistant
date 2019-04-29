@@ -1,0 +1,19 @@
+<h1>Job Position Management</h1>
+
+<p *ngIf="!model"><em>Loading...</em></p>
+
+<div *ngIf="model">
+    <button type="button" (click)="createNew()">Create New</button>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let jobPosition of model.items">
+                <td><a [routerLink]="['/jobPosition', jobPosition.jobPositionId]">{{ jobPosition.title }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

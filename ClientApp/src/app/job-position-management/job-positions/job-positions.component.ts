@@ -4,13 +4,13 @@ import { SearchResults } from '../../libs/search-results';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html'
+  selector: 'app-job-positions',
+  templateUrl: './job-positions.component.html'
 })
-export class UsersComponent implements OnInit {
+export class JobPositionsComponent implements OnInit {
   private ONE_PAGE_ITEMS_COUNT = 50;
 
-  public model: SearchResults<SearchUserItem>;
+  public model: SearchResults<SearchJobPositionItem>;
   public pageIndex: number;
 
   constructor(
@@ -32,20 +32,17 @@ export class UsersComponent implements OnInit {
     this._route.paramMap.subscribe(async paramsMap => {
       this.pageIndex = paramsMap["pageIndex"] == null ? +paramsMap["pageIndex"] : 1;
 
-      this.model = await this._http.get<SearchResults<SearchUserItem>>(`${this._baseUrl}api/user`, { params: this.getParams() })
+      this.model = await this._http.get<SearchResults<SearchJobPositionItem>>(`${this._baseUrl}api/jobPosition`, { params: this.getParams() })
         .toPromise();
     });
   }
 
   public async createNew(): Promise<void> {
-    await this._router.navigate(["user"]);
+    await this._router.navigate(["jpbPosition"]);
   }
 }
 
-interface SearchUserItem {
-  userId: string;
-  username: string;
-  displayName: string;
-  role: string;
-  blocked: boolean;
+interface SearchJobPositionItem {
+  jobPositionId: string;
+  title: string;
 }
