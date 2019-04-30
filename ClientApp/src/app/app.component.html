@@ -1,10 +1,22 @@
-<div class='container-fluid'>
-  <div class='row'>
-    <div class='col-sm-3'>
-      <app-nav-menu></app-nav-menu>
-    </div>
-    <div class='col-sm-9 body-content'>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+<div class="main-div">
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>HR Assistant</h1>
+  </mat-toolbar>
+  <mat-sidenav-container autosize class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" mode="side">
+      <mat-nav-list>
+        <mat-list-item (click)="userManagement()">User Management</mat-list-item>
+        <mat-list-item (click)='jobPositionManagement()'>Job Position Management</mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

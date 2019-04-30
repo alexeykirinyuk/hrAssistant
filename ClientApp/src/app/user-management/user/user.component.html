@@ -2,34 +2,40 @@
 
 <p *ngIf="!user"><em>Loading...</em></p>
 <div *ngIf="user">
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" class="form-comtrol" [(ngModel)]="user.username" required>
-    </div>
-    <div class="form-group">
-        <label>First Name</label>
-        <input type="text" class="form-comtrol" [(ngModel)]="user.firstName" required>
-    </div>
-    <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" class="form-comtrol" [(ngModel)]="user.lastName" required>
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-comtrol" [(ngModel)]="user.password" required>
-    </div>
-    <div class="form-group">
-        <label>Role</label>
-        <select class="form-control" [(ngModel)]="user.role" required>
-            <option *ngFor="let role of ['HR', 'TeamLead']" [value]="role">{{role}}</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>Blocked</label>
-        <input type="checkbox" class="form-control" [(ngModel)]="user.isBlocked">
+    <div>
+        <mat-form-field id="username-field" class="input-field">
+            <input matInput placeholder="Username" [(ngModel)]="user.username" required>
+        </mat-form-field>
     </div>
     <div>
-        <button type="button" (click)="submit()">{{buttonText}}</button>
-        <button type="button" (click)="cancel()">Cancel</button>
+        <mat-form-field id="first-name-field" class="input-field">
+            <input matInput placeholder="First Name" [(ngModel)]="user.firstName" required>
+        </mat-form-field>
+        <mat-form-field id="last-name-field" class="input-field">
+            <input matInput placeholder="Last Name" [(ngModel)]="user.lastName" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="input-field">
+            <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="input-field">
+            <mat-label>Role</mat-label>
+            <mat-select [(ngModel)]="user.role">
+                <mat-option *ngFor="let role of ['HR', 'TeamLead']" [value]="role">
+                    {{role}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-checkbox [(ngModel)]="user.isBlocked">Is Blocked</mat-checkbox>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+    <div>
+        <button id="create-button" class="yellow-button" type="button" (click)="submit()" mat-button>{{buttonText}}</button>
+        <button id="cancel-button" class="" type="button" (click)="cancel()" mat-button>Cancel</button>
     </div>
 </div>

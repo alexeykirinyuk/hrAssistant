@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
 
   public model: SearchResults<SearchUserItem>;
   public pageIndex: number;
+  public displayedColumns: string[] = ["username", "displayName", "role", "blocked"]
 
   constructor(
     private _http: HttpClient,
@@ -39,6 +40,10 @@ export class UsersComponent implements OnInit {
 
   public async createNew(): Promise<void> {
     await this._router.navigate(["user"]);
+  }
+
+  public async openUser(user: SearchUserItem): Promise<void> {
+    await this._router.navigate(["user", user.userId]);
   }
 }
 

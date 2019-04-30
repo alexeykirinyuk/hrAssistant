@@ -5,7 +5,8 @@ import { User } from "../models/user";
 
 @Component({
     selector: 'app-user',
-    templateUrl: './user.component.html'
+    templateUrl: './user.component.html',
+    styleUrls: ["/user.component.scss"]
 })
 export class UserComponent implements OnInit {
     public user: User;
@@ -26,8 +27,7 @@ export class UserComponent implements OnInit {
                     .user;
                 this.isEditing = true;
             } else {
-                this.user = new User();
-                this.user.role = "HR";
+                this.user = { role: "HR", isBlocked: false } as User;
                 this.isEditing = false;
             }
         });
