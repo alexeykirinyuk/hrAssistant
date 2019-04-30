@@ -31,11 +31,11 @@ namespace HRAssistant.DataAccess.Repositories
             return _context.Users.AnyAsync(u => u.Id == userId);
         }
 
-        public Task<bool> ExistsByUsername(string username)
+        public Task<bool> ExistsByUsername(string username, Guid? excludeUserId = null)
         {
             Guard.AgainstNullArgument(nameof(username), username);
 
-            return _context.Users.AnyAsync(u => u.Username == username);
+            return _context.Users.AnyAsync(u => u.Username == username && (!excludeUserId.HasValue || excludeUserId.Value != u.Id));
         }
 
         public async Task<UserEntity> Get(Guid userId)

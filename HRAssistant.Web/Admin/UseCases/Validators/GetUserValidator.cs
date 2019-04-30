@@ -15,7 +15,8 @@ namespace HRAssistant.Admin.UseCases.Validators
                 .DependentRules(() =>
                 {
                     RuleFor(request => request.UserId)
-                        .MustAsync((userId, token) => userRepository.Exists(userId.Value));
+                        .MustAsync((userId, token) => userRepository.Exists(userId.Value))
+                        .WithMessage("User with same ID was not found.");
                 });
         }
     }

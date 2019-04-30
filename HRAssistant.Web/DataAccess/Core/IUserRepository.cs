@@ -9,7 +9,7 @@ namespace HRAssistant.DataAccess.Core
     {
         Task<bool> Exists(Guid userId);
 
-        Task<bool> ExistsByUsername(string username);
+        Task<bool> ExistsByUsername(string username, Guid? excludeUserId = null);
 
         Task<UserEntity> Get(Guid userId);
 
