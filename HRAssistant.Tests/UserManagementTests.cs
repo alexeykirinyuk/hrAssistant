@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -26,27 +27,28 @@ namespace HRAssistant.Tests
         [Fact]
         public async Task Create()
         {
-            // Given
+            // Given there is User
             _testUser.Id = (await Bus.Request(new AddUser {User = _testUser}))
                 .UserId;
 
-            // When
+            // When I get User
             var receivedUser = (await Bus.Execute(new GetUser {UserId = _testUser.Id}))
                 .User;
 
-            // Then
+            // Then received user data should be equal creation data.
             receivedUser.Should()
                 .BeEquivalentTo(_testUser);
 
-            // When 2
+            // When I search Users
             var searchUsers = (await Bus.Execute(new SearchUsers {Username = _testUser.Username}))
                 .Items;
 
-            // Then 2
+            // Then only one user I received
             searchUsers
                 .Should()
                 .HaveCount(1);
 
+            // And user data equal
             AssertSearchUserItemEqualUser(searchUsers);
         }
 
@@ -85,7 +87,7 @@ namespace HRAssistant.Tests
             AssertSearchUserItemEqualUser(searchUsers);
         }
 
-        private void AssertSearchUserItemEqualUser(SearchUserItem[] searchUsers)
+        private void AssertSearchUserItemEqualUser(IEnumerable<SearchUserItem> searchUsers)
         {
             var user = searchUsers.Single();
             user.Username.Should().Be(_testUser.Username);
