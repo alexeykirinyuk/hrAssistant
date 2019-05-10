@@ -6,6 +6,6 @@ namespace HRAssistant.Web.Admin.Contracts.CityContracts
     {
         public Guid? Id { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
     }
 }

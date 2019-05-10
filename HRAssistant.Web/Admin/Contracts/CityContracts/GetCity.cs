@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HRAssistant.Infrastructure.CQRS;
 
 namespace HRAssistant.Web.Admin.Contracts.CityContracts
 {
-    public sealed class GetCity
+    public sealed class GetCity : IQuery<GetCityResult>
     {
-        public Guid CityId { get;set; }
+        public Guid? CityId { get;set; }
     }
 }

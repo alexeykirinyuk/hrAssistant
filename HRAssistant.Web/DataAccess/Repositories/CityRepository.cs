@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HRAssistant.DataAccess;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using LiteGuard;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRAssistant.Web.DataAccess.Repositories
 {
-    public class CityRepository : ICityRepository
+    internal sealed class CityRepository : ICityRepository
     {
         private readonly DatabaseContext _context;
 
@@ -18,6 +18,17 @@ namespace HRAssistant.Web.DataAccess.Repositories
             Guard.AgainstNullArgument(nameof(context), context);
 
             _context = context;
+        }
+
+        public async Task<bool> Exists(Guid id)
+        {
+            return await _context.Cities.AnyAsync(city => city.Id == id);
+        }
+
+        public async Task<bool> Exists(string name, Guid? excludeCityId = null)
+        {
+            return await _context.Cities
+                .AnyAsync(city => city.Name == name && (!excludeCityId.HasValue || city.Id != excludeCityId.Value));
         }
 
         public async Task<CityEntity> Get(Guid cityId)
@@ -31,14 +42,8 @@ namespace HRAssistant.Web.DataAccess.Repositories
             return city;
         }
 
-        public IQueryable<CityEntity> Search()
-        {
-            throw new NotImplementedException();
-        }
+        public IQueryable<CityEntity> Search() => _context.Cities;
 
-        public void Add(CityEntity city)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(CityEntity city) => _context.Cities.Add(city);
     }
 }

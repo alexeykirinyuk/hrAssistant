@@ -24,4 +24,9 @@ export class AppComponent {
     await this.sidenav.close();
     await this._router.navigate(["jobPositions"]);
   }
+
+  public async cityManagement(): Promise<void> {
+    await this.sidenav.close();
+    await this._router.navigate(["cities"]);
+  }
 }

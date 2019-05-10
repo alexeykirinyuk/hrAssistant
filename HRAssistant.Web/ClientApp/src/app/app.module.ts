@@ -11,6 +11,8 @@ import { JobPositionsComponent } from './job-position-management/job-positions/j
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { JobPositionComponent } from './job-position-management/job-position/job-position.component';
+import { CitisComponent } from './city-management/cities/cities.component';
+import { CityComponent } from './city-management/city/city.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { JobPositionComponent } from './job-position-management/job-position/job
     UsersComponent,
     UserComponent,
     JobPositionsComponent,
-    JobPositionComponent
+    JobPositionComponent,
+    CitisComponent,
+    CityComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +42,11 @@ import { JobPositionComponent } from './job-position-management/job-position/job
       { path: 'jobPositions', component: JobPositionsComponent },
       { path: 'jobPosition/:id', component: JobPositionComponent },
       { path: 'jobPosition', component: JobPositionComponent },
+
+      { path: 'cities/:pageIndex', component: CitisComponent },
+      { path: 'cities', component: CitisComponent },
+      { path: 'city/:id', component: CityComponent },
+      { path: 'city', component: CityComponent },
     ])
   ],
   providers: [],

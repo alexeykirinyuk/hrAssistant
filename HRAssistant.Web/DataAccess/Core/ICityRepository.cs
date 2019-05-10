@@ -7,6 +7,10 @@ namespace HRAssistant.Web.DataAccess.Core
 {
     internal interface ICityRepository
     {
+        Task<bool> Exists(Guid id);
+
+        Task<bool> Exists(string name, Guid? excludeCityId = null);
+
         Task<CityEntity> Get(Guid cityId);
 
         IQueryable<CityEntity> Search();

@@ -1,0 +1,22 @@
+<p *ngIf="!city"><em>Loading...</em></p>
+<div class="outer">
+    <div *ngIf="city" class="form-div">
+        <div class="header">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="fields">
+            <div>
+                <mat-form-field id="name-field" class="input-field">
+                    <input matInput placeholder="Name" [(ngModel)]="city.name" required>
+                </mat-form-field>
+            </div>
+
+            <mat-divider class="divider"></mat-divider>
+            <div>
+                <button class="yellow-button submit" type="button" (click)="submit()"
+                    mat-button>{{buttonText}}</button>
+                <button class="cancel" type="button" (click)="cancel()" mat-button>Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
