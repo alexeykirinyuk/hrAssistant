@@ -16,8 +16,8 @@
       </mat-step>
       <mat-step label="Шаблон">
         <mat-form-field id="description-field" class="input-field">
-                <textarea matInput placeholder="Описание шаблона" [(ngModel)]="jobPosition.template.description"
-                          required></textarea>
+          <textarea matInput placeholder="Описание шаблона" [(ngModel)]="jobPosition.template.description"
+            required></textarea>
         </mat-form-field>
       </mat-step>
       <mat-step label="Вопросы">
@@ -38,7 +38,7 @@
                   <input matInput placeholder="Название вопроса" [(ngModel)]="question.title" required>
                 </mat-form-field>
                 <div>
-                <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
+                  <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
                 </div>
               </div>
               <div *ngIf="isInputQuestion(question)" class="form-div-question">
@@ -49,14 +49,13 @@
                   <input matInput placeholder="Название вопроса" [(ngModel)]="question.title" required>
                 </mat-form-field>
                 <div>
-                <mat-form-field class="input-field">
-                  <input matInput placeholder="Верный ответ" [(ngModel)]="question.correctAnswer"
-                         required>
-                </mat-form-field>
+                  <mat-form-field class="input-field">
+                    <input matInput placeholder="Верный ответ" [(ngModel)]="question.correctAnswer" required>
+                  </mat-form-field>
                 </div>
                 <div>
-                <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
-              </div>
+                  <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
+                </div>
               </div>
               <div *ngIf="isSelectQuestion(question)" class="form-div-question">
                 <div class="header">
@@ -66,15 +65,13 @@
                   <input matInput placeholder="Название вопроса" [(ngModel)]="question.title" required>
                 </mat-form-field>
                 <div>
-                <button class="button" (click)="addOption(question)" mat-button>Добавить опцию
-                </button>
-              </div>
-                <div cdkDropList class="answer-list"
-                     (cdkDropListDropped)="dropOption(question, $event)">
+                  <button class="button" (click)="addOption(question)" mat-button>Добавить опцию
+                  </button>
+                </div>
+                <div cdkDropList class="answer-list" (cdkDropListDropped)="dropOption(question, $event)">
                   <div class="answer-box" *ngFor="let option of question.options" cdkDrag>
                     <mat-form-field class="input-field">
-                      <input matInput placeholder="Название опции" [(ngModel)]="option.title"
-                             required>
+                      <input matInput placeholder="Название опции" [(ngModel)]="option.title" required>
                     </mat-form-field>
                     <mat-checkbox [(ngModel)]="option.isCorrect">Верный ответ?
                     </mat-checkbox>
@@ -86,7 +83,7 @@
                 <mat-checkbox [(ngModel)]="question.oneCorrectAnswer">Только один правильный ответ?
                 </mat-checkbox>
                 <div>
-                <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
+                  <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
                 </div>
               </div>
             </div>
@@ -96,7 +93,7 @@
       <mat-step label="Завершить">
         <div>
           <button id="create-button" class="yellow-button" type="button" (click)="submit()"
-                  mat-button>{{buttonText}}</button>
+            mat-button>{{buttonText}}</button>
           <button id="cancel-button" type="button" (click)="cancel()" mat-button>Отмена</button>
         </div>
       </mat-step>

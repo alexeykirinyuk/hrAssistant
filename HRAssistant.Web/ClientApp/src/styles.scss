@@ -97,108 +97,11 @@ button[mat-button] {
 
 .outer {
   width: 100%;
-
-  .form-div {
-    width: 500px;
-    border: 1.5px #a7b9c6 solid;
-    border-radius: 6px 6px 0 0;
-    box-shadow: 0 0 0 1px #dddfe0;
-    text-align: center;
-    display: table;
-    margin: 0 auto;
-
-    .header {
-      background: #6e7b84;
-      height: 100px;
-      border-radius: 6px 6px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      h1 {
-        color: white;
-      }
-    }
-
-    .fields {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      .mat-form-field {
-        width: 75%;
-
-        label.mat-form-field-label {
-          color: #6e7b84;
-        }
-      }
-
-      .submit {
-        margin-right: 10px;
-        width: 100px;
-        height: 40px;
-      }
-
-      .cancel {
-        background: #f5f5f5;
-        border-color: #f5f5f6;
-        color: #333;
-        width: 100px;
-        height: 40px;
-      }
-    }
-  }
-
-  .form-div-question {
-    width: 400px;
-    border: 1.5px #a7b9c6 solid;
-    border-radius: 6px 6px 0 0;
-    box-shadow: 0 0 0 1px #dddfe0;
-    text-align: center;
-    display: table;
-    margin: 0 auto;
-    margin-bottom: 10px;
-
-    .header {
-      background: #6e7b84;
-      height: 50px;
-      border-radius: 6px 6px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      h1 {
-        color: white;
-      }
-    }
-
-    .fields {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      .mat-form-field {
-        width: 75%;
-
-        label.mat-form-field-label {
-          color: #6e7b84;
-        }
-      }
-
-      .submit {
-        margin-right: 10px;
-        width: 100px;
-        height: 40px;
-      }
-
-      .cancel {
-        background: #f5f5f5;
-        border-color: #f5f5f6;
-        color: #333;
-        width: 100px;
-        height: 40px;
-      }
-    }
-  }
 }
 
 .mat-step-icon-selected {
   background: #ffdd2d !important;
-  .mat-step-icon-content  {
+  .mat-step-icon-content {
     color: #333 !important;
   }
 }
