@@ -13,6 +13,7 @@ import { Question } from '../models/Question';
 import { InputQuestion } from '../models/InputQuestion';
 import { SelectQuestion } from '../models/SelectQuestion';
 import { Option } from '../models/Option';
+import { EnumUtils } from 'src/app/utils/EnumUtils';
 
 @Component({
     selector: 'app-job-position',
@@ -92,15 +93,15 @@ export class JobPositionComponent implements OnInit {
     }
 
     public isGeneralQuestion(question: Question): boolean {
-        return question.questionType == QuestionType.General;
+        return EnumUtils.equals(question.questionType, QuestionType.General, QuestionType);
     }
 
     public isInputQuestion(question: Question): boolean {
-        return question.questionType == QuestionType.Input;
+        return EnumUtils.equals(question.questionType, QuestionType.Input, QuestionType);
     }
 
     public isSelectQuestion(question: Question): boolean {
-        return question.questionType == QuestionType.Select;
+        return EnumUtils.equals(question.questionType, QuestionType.Select, QuestionType);
     }
 
     public drop(event: CdkDragDrop<Question[]>): void {
