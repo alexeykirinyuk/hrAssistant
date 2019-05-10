@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, OnInit, Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { User } from "../models/user";
+import { User } from "./user";
 
 @Component({
     selector: 'app-user',
@@ -34,7 +34,11 @@ export class UserComponent implements OnInit {
     }
 
     public get buttonText(): string {
-        return this.isEditing ? "Update" : "Create";
+        return this.isEditing ? "Обновить" : "Создать";
+    }
+
+    public get title(): string {
+        return this.isEditing ? this.user.firstName + " " + this.user.lastName : "Новый сотрудник";
     }
 
     public async submit(): Promise<void> {

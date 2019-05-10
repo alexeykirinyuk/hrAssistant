@@ -2,34 +2,147 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body {
-    height: 100%;
-    color: #333;
+html,
+body {
+  height: 100%;
+  color: #333;
+  font: 13px/20px haas, pragmatica, EllipsisFallback, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 20px;
 }
 
 .main-table {
-    width: 100%;
-}
-
-tr.clickable:hover {
-    background: #f5f5f5;
+  width: 100%;
 }
 
 .buttons-block {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .yellow-button {
-    border: 1px solid #ffdd2d;
-    background-color: #ffdd2d;
+  border: 1px solid #ffdd2d;
+  background-color: #ffdd2d;
 }
 
 button[mat-button] {
-    width: 150px;
-    height: 50px;
+  width: 150px;
+  height: 50px;
+}
+
+.crud-header {
+  .left-div {
+    width: 50%;
+    display: inline-flex;
+  }
+
+  .right-div {
+    display: inline;
+  }
+
+  h1 {
+    display: inline;
+  }
+
+  button {
+    float: right;
+    color: #959ba4;
+
+    &:hover {
+      color: #ffdd2d;
+    }
+
+    div {
+      background: none;
+    }
+  }
+
+  .divider {
+    margin-top: 0 !important;
+  }
+}
+
+.table-wrapper {
+  padding-right: 200px;
+  padding-left: 200px;
+
+  table {
+    background: linear-gradient(to right, #5a656d, #95a6b2);
+    border-radius: 5px;
+
+    tr {
+      th {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      td {
+        color: #dddfe0;
+      }
+
+      &.clickable:hover {
+        background: linear-gradient(to right, #6e7b84, #a7b9c6);
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .divider {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.outer {
+  width: 100%;
+
+  .form-div {
+    width: 500px;
+    border: 1.5px #a7b9c6 solid;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 0 0 1px #dddfe0;
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+
+    .header {
+      background: #6e7b84;
+      height: 100px;
+      border-radius: 6px 6px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        color: white;
+      }
+    }
+
+    .fields {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      .mat-form-field {
+        width: 75%;
+
+        label.mat-form-field-label {
+          color: #6e7b84;
+        }
+      }
+
+      .submit {
+        margin-right: 10px;
+        width: 100px;
+        height: 40px;
+      }
+
+      .cancel {
+        background: #f5f5f5;
+        border-color: #f5f5f6;
+        color: #333;
+        width: 100px;
+        height: 40px;
+      }
+    }
+  }
 }

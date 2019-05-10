@@ -12,7 +12,7 @@ export class UsersComponent implements OnInit {
 
   public model: SearchResults<SearchUserItem>;
   public pageIndex: number;
-  public displayedColumns: string[] = ["username", "displayName", "role", "blocked"]
+  public displayedColumns: string[] = ["username", "displayName", "role", "blocked"];
 
   constructor(
     private _http: HttpClient,

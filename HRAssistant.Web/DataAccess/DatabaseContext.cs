@@ -1,4 +1,6 @@
 ﻿using HRAssistant.Domain;
+using HRAssistant.Web.Admin.Contracts.CityContracts;
+using HRAssistant.Web.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRAssistant.DataAccess
@@ -8,6 +10,8 @@ namespace HRAssistant.DataAccess
         public DbSet<UserEntity> Users { get; set; }
 
         public DbSet<JobPositionEntity> JobPositions { get; set; }
+
+        public DbSet<CityEntity> Cities { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
@@ -36,6 +40,8 @@ namespace HRAssistant.DataAccess
             var option = builder.Entity<OptionEntity>().ToTable("Option");
 
             builder.Entity<GeneralQuestionEntity>().ToTable("GeneralQuestion");
+
+            builder.Entity<CityEntity>().ToTable("City");
         }
     }
 }

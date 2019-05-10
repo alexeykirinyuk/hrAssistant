@@ -1,21 +1,74 @@
-<h1>Job Position Management</h1>
+<div class="crud-header">
+    <div class="left-div">
+        <h1>Job Position Management</h1>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+</div>
 
-<p *ngIf="!model"><em>Loading...</em></p>
-<div *ngIf="model">
-    <div class="form-group">
-        <label>Title</label>
-        <input type="text" class="form-comtrol" [(ngModel)]="model.title" required>
+<p *ngIf="!jobPosition"><em>Loading...</em></p>
+<div *ngIf="jobPosition">
+    <div>
+        <mat-form-field id="title-field" class="input-field">
+            <input matInput placeholder="Title" [(ngModel)]="jobPosition.title" required>
+        </mat-form-field>
     </div>
     <div>
-        <div><strong>Template</strong></div>
-
-        <div class="form-group">
-            <label>Description</label>
-            <input type="text" class="form-comtrol" [(ngModel)]="model.template.description" required>
-        </div>
+        <h2>Template</h2>
         <div>
-            <button type="button" (click)="submit()">{{buttonText}}</button>
-            <button type="button" (click)="cancel()">Cancel</button>
+            <mat-form-field id="description-field" class="input-field">
+                <textarea matInput placeholder="Description" [(ngModel)]="jobPosition.template.description"
+                    required></textarea>
+            </mat-form-field>
+            <div>
+                <h3>Questions</h3>
+                <div>
+                    <button class="yellow-button" [matMenuTriggerFor]="menu" mat-button>Add Question</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="addGeneralQuestion()">General Question</button>
+                        <button mat-menu-item (click)="addInputQuestion()">Input Question</button>
+                        <button mat-menu-item (click)="addSelectQuestion()">Select Question</button>
+                    </mat-menu>
+                    <div cdkDropList class="question-list" (cdkDropListDropped)="drop($event)">
+                        <div class="question-box" *ngFor="let question of jobPosition.template.questions" cdkDrag>
+                            <mat-form-field class="input-field">
+                                <input matInput placeholder="Question Title" [(ngModel)]="question.title" required>
+                            </mat-form-field>
+                            <div *ngIf="isGeneralQuestion(question)">
+                            </div>
+                            <div *ngIf="isInputQuestion(question)">
+                                <mat-form-field class="input-field">
+                                    <input matInput placeholder="Correct Answer" [(ngModel)]="question.correctAnswer"
+                                        required>
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="isSelectQuestion(question)">
+                                <button class="yellow-button" (click)="addOption(question)" mat-button>Add
+                                    Option</button>
+                                <div cdkDropList class="answer-list"
+                                    (cdkDropListDropped)="dropOption(question, $event)">
+                                    <div class="answer-box" *ngFor="let option of question.options" cdkDrag>
+                                        <mat-form-field class="input-field">
+                                            <input matInput placeholder="Option Title" [(ngModel)]="option.title"
+                                                required>
+                                        </mat-form-field>
+                                        <mat-checkbox [(ngModel)]="option.isCorrect">It is correct answer?
+                                        </mat-checkbox>
+                                    </div>
+                                </div>
+                                <mat-checkbox [(ngModel)]="question.oneCorrectAnswer">Only One Correct Answer?
+                                </mat-checkbox>
+                            </div>
+                            <button type="button" (click)="removeQuestion(question)" mat-button>Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+    <div>
+        <button id="create-button" class="yellow-button" type="button" (click)="submit()"
+            mat-button>{{buttonText}}</button>
+        <button id="cancel-button" type="button" (click)="cancel()" mat-button>Cancel</button>
     </div>
 </div>

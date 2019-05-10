@@ -13,6 +13,8 @@ export class JobPositionsComponent implements OnInit {
   public model: SearchResults<SearchJobPositionItem>;
   public pageIndex: number;
 
+  public displayedColumns: string[] = ["title"];
+
   constructor(
     private _http: HttpClient,
     @Inject('BASE_URL') private _baseUrl: string,
@@ -38,7 +40,11 @@ export class JobPositionsComponent implements OnInit {
   }
 
   public async createNew(): Promise<void> {
-    await this._router.navigate(["jpbPosition"]);
+    await this._router.navigate(["jobPosition"]);
+  }
+
+  public async open(user: SearchJobPositionItem): Promise<void> {
+    await this._router.navigate(["jobPosition", user.jobPositionId]);
   }
 }
 
