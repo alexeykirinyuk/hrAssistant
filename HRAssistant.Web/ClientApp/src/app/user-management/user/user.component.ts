@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
         this._route.paramMap.subscribe(async paramsMap => {
             var userId = paramsMap.get("id");
             if (userId != null) {
-                this.user = (await this._http.get<GetUserResult>(`${this._baseUrl}/api/user/${userId}`).toPromise())
+                this.user = (await this._http.get<GetUserResult>(`${this._baseUrl}api/user/${userId}`).toPromise())
                     .user;
                 this.isEditing = true;
             } else {
@@ -43,9 +43,9 @@ export class UserComponent implements OnInit {
 
     public async submit(): Promise<void> {
         if (this.isEditing) {
-            await this._http.put(`${this._baseUrl}/api/user`, { user: this.user } as UpdateUser).toPromise();
+            await this._http.put(`${this._baseUrl}api/user`, { user: this.user } as UpdateUser).toPromise();
         } else {
-            await this._http.post(`${this._baseUrl}/api/user`, { user: this.user } as AddUser).toPromise();
+            await this._http.post(`${this._baseUrl}api/user`, { user: this.user } as AddUser).toPromise();
         }
         await this._router.navigate(["users"]);
     }

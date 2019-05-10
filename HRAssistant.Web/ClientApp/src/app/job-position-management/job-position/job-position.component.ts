@@ -36,7 +36,7 @@ export class JobPositionComponent implements OnInit {
             var jobPositionId = paramsMap.get("id");
             if (jobPositionId != null) {
                 this.jobPosition = (await this._http
-                    .get<GetJobPositionResult>(`${this._baseUrl}/api/jobPosition/${jobPositionId}`)
+                    .get<GetJobPositionResult>(`${this._baseUrl}api/jobPosition/${jobPositionId}`)
                     .toPromise())
                     .jobPosition;
                 this.isEditing = true;
@@ -57,9 +57,9 @@ export class JobPositionComponent implements OnInit {
         this.updateQuestionOrderIndexes();
 
         if (this.isEditing) {
-            await this._http.put(`${this._baseUrl}/api/jobPosition`, { jobPosition: this.jobPosition } as UpdateJobPosition).toPromise();
+            await this._http.put(`${this._baseUrl}api/jobPosition`, { jobPosition: this.jobPosition } as UpdateJobPosition).toPromise();
         } else {
-            await this._http.post(`${this._baseUrl}/api/jobPosition`, { jobPosition: this.jobPosition } as CreateJobPosition).toPromise();
+            await this._http.post(`${this._baseUrl}api/jobPosition`, { jobPosition: this.jobPosition } as CreateJobPosition).toPromise();
         }
         await this._router.navigate(["jobPositions"]);
     }
@@ -114,4 +114,8 @@ export class JobPositionComponent implements OnInit {
     public dropOption(question: SelectQuestion, event: CdkDragDrop<Option[]>): void {
         moveItemInArray(question.options, event.previousIndex, event.currentIndex);
     }
+
+  public removeOption(question: SelectQuestion, option: Option): void {
+      question.options = question.options.filter(v => v !== option);
+  }
 }
