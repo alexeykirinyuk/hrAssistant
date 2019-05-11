@@ -13,6 +13,8 @@ import { MaterialModule } from './material-module';
 import { JobPositionComponent } from './job-position-management/job-position/job-position.component';
 import { CitisComponent } from './city-management/cities/cities.component';
 import { CityComponent } from './city-management/city/city.component';
+import { TeamsComponent } from './team-management/teams/teams.component';
+import { TeamComponent } from './team-management/team/team.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CityComponent } from './city-management/city/city.component';
     JobPositionsComponent,
     JobPositionComponent,
     CitisComponent,
-    CityComponent
+    CityComponent,
+    TeamsComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,6 +51,12 @@ import { CityComponent } from './city-management/city/city.component';
       { path: 'cities', component: CitisComponent },
       { path: 'city/:id', component: CityComponent },
       { path: 'city', component: CityComponent },
+
+      { path: 'teams/:pageIndex', component: TeamsComponent },
+      { path: 'teams', component: TeamsComponent },
+      { path: 'team/:id', component: TeamComponent },
+      { path: 'team', component: TeamComponent },
+
     ])
   ],
   providers: [],

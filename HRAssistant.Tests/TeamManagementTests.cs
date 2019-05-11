@@ -101,6 +101,7 @@ namespace HRAssistant.Tests
             items.Should()
                 .HaveCount(1);
             var item = items.Single();
+            item.TeamId.Should().Be(_team.Id.Value);
             item.Title.Should().Be(_team.Title);
             item.CityTitle.Should().Be(_city.Name);
             item.TeamLeadFullName.Should().Be(_user.FirstName + " " + _user.LastName);

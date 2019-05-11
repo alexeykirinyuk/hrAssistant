@@ -2,18 +2,18 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchResults } from '../../libs/search-results';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SearchUserItem } from './SearchUserItem';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html'
+  selector: 'app-teams',
+  templateUrl: './teams.component.html'
 })
-export class UsersComponent implements OnInit {
+export class TeamsComponent implements OnInit {
   private ONE_PAGE_ITEMS_COUNT = 50;
 
-  public model: SearchResults<SearchUserItem>;
+  public model: SearchResults<SearchTeamItem>;
   public pageIndex: number;
-  public displayedColumns: string[] = ["username", "displayName", "role", "blocked"];
+
+  public displayedColumns: string[] = ["title", "teamLeadFullName", "cityTitle", "isBlocked"];
 
   constructor(
     private _http: HttpClient,
@@ -34,16 +34,24 @@ export class UsersComponent implements OnInit {
     this._route.paramMap.subscribe(async paramsMap => {
       this.pageIndex = paramsMap["pageIndex"] == null ? +paramsMap["pageIndex"] : 1;
 
-      this.model = await this._http.get<SearchResults<SearchUserItem>>(`${this._baseUrl}api/user`, { params: this.getParams() })
+      this.model = await this._http.get<SearchResults<SearchTeamItem>>(`${this._baseUrl}api/team`, { params: this.getParams() })
         .toPromise();
     });
   }
 
   public async createNew(): Promise<void> {
-    await this._router.navigate(["user"]);
+    await this._router.navigate(["team"]);
   }
 
-  public async openUser(user: SearchUserItem): Promise<void> {
-    await this._router.navigate(["user", user.userId]);
+  public async open(team: SearchTeamItem): Promise<void> {
+    await this._router.navigate(["team", team.teamId]);
   }
+}
+
+interface SearchTeamItem {
+    teamId: string;
+    title: string;
+    cityTitle: string;
+    teamLeadFullName: string;
+    isBlocked: string;
 }

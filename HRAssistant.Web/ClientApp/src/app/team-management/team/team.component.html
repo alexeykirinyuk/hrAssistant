@@ -1,0 +1,43 @@
+<p *ngIf="!loaded"><em>Загрузка...</em></p>
+<div class="outer">
+    <div *ngIf="loaded" class="form-div">
+        <div class="header">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="fields">
+            <div>
+                <mat-form-field id="username-field" class="input-field">
+                    <input matInput placeholder="Название" [(ngModel)]="model.title" required>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field id="team-lead-field" class="input-field">
+                    <mat-select placeholder="Руководитель" [(value)]="model.teamLeadId">
+                      <mat-option *ngFor="let user of users" [value]="user.userId">
+                        {{user.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field id="city-field" class="input-field">
+                    <mat-select placeholder="Город" [(value)]="model.cityId">
+                      <mat-option *ngFor="let city of cities" [value]="city.id">
+                        {{city.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-checkbox [(ngModel)]="model.isBlocked">Заблокирована</mat-checkbox>
+            </div>
+
+            <mat-divider class="divider"></mat-divider>
+            <div>
+                <button class="yellow-button submit" type="button" (click)="submit()"
+                    mat-button>{{buttonText}}</button>
+                <button class="cancel" type="button" (click)="cancel()" mat-button>Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>

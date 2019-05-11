@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HRAssistant.Web.Controllers
 {
+    [Route("api/[controller]")]
     public sealed class TeamController : Controller
     {
         private readonly IBus _bus;

@@ -16,17 +16,23 @@ export class AppComponent {
   }
 
   public async userManagement(): Promise<void> {
-    await this.sidenav.close();
-    await this._router.navigate(["users"]);
+    await this.navigateTo("users");
   }
 
   public async jobPositionManagement(): Promise<void> {
-    await this.sidenav.close();
-    await this._router.navigate(["jobPositions"]);
+    await this.navigateTo("jobPositions");
   }
 
   public async cityManagement(): Promise<void> {
+    await this.navigateTo("cities");
+  }
+
+  public async teamManagement(): Promise<void> {
+    await this.navigateTo("teams");
+  }
+
+  private async navigateTo(page: string) {
     await this.sidenav.close();
-    await this._router.navigate(["cities"]);
+    await this._router.navigate([page]);
   }
 }

@@ -24,6 +24,7 @@ namespace HRAssistant.Web.Admin.UseCases
                 .FilterBy(query.Title, entity => entity.Title.Contains(query.Title))
                 .Select(t => new SearchTeamItem
                 {
+                    TeamId = t.Id,
                     Title = t.Title,
                     CityTitle = t.City.Name,
                     TeamLeadFullName = t.TeamLead.FirstName + " " + t.TeamLead.LastName,
