@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HRAssistant.Web.Domain
 {
@@ -10,5 +8,7 @@ namespace HRAssistant.Web.Domain
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+
+        public List<TeamEntity> Teams { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace HRAssistant.DataAccess
 
         public DbSet<CityEntity> Cities { get; set; }
 
+        public DbSet<TeamEntity> Teams { get; set; }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
@@ -42,6 +44,12 @@ namespace HRAssistant.DataAccess
             builder.Entity<GeneralQuestionEntity>().ToTable("GeneralQuestion");
 
             builder.Entity<CityEntity>().ToTable("City");
+
+            var team = builder.Entity<TeamEntity>().ToTable("Team");
+            team.HasOne(t => t.City).WithMany(c => c.Teams)
+                .HasForeignKey(t => t.CityId);
+            team.HasOne(t => t.TeamLead).WithMany(u => u.TeamLeadTeams)
+                .HasForeignKey(t => t.TeamLeadId);
         }
     }
 }

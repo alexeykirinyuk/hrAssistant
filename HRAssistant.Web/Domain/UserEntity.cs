@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using HRAssistant.Web.Domain;
 
 namespace HRAssistant.Domain
 {
@@ -18,5 +20,7 @@ namespace HRAssistant.Domain
         public string Password { get; set; }
 
         public bool IsBlocked { get; set; }
+
+        public List<TeamEntity> TeamLeadTeams { get; set; }
     }
 }

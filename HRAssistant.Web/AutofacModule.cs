@@ -14,6 +14,7 @@ namespace HRAssistant
                 .RegisterAssemblyTypes(ThisAssembly)
                 .Where(assembly => assembly.Name.EndsWith("Validator") || assembly.Name.EndsWith("Handler"))
                 .AsImplementedInterfaces()
+                .AsSelf()
                 .InstancePerDependency();
 
             builder
