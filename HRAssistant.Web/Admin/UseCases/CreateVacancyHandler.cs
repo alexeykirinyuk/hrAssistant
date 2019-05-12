@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HRAssistant.Web.Admin.Contracts.VacancyContracts;
+using HRAssistant.Web.Admin.UseCases.Mapping;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using HRAssistant.Web.Infrastructure.CQRS;
@@ -31,21 +33,12 @@ namespace HRAssistant.Web.Admin.UseCases
             var entity = new VacancyEntity
             {
                 Id = vacancyId,
-                TeamId = vacancy.TeamId.Value,
-                JobPositionId = vacancy.JobPositionId.Value,
-                JobsNumber = vacancy.JobsNumber.Value,
-                Salary = vacancy.Salary,
-                CandidateRequirements = vacancy.CandidateRequirements,
-                Status = VacancyStatus.Draft,
                 Form = new FormEntity
                 {
-                    Description = vacancy.Form.Description,
-                    Questions = vacancy.Form.Questions
-                        .Select(q => q.CreateQuestionEntity())
-                        .ToList()
+                    Questions = new List<QuestionEntity>()
                 }
             };
-
+            entity.Update(vacancy);
             _vacancyRepository.Add(entity);
 
             await _unitOfWork.SaveChangesAsync();

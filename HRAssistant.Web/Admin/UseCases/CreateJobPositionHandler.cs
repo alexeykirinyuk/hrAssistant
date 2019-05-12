@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Admin.UseCases.Mapping;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using HRAssistant.Web.Infrastructure.CQRS;

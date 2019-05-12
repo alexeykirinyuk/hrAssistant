@@ -4,14 +4,16 @@ using HRAssistant.Web.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HRAssistant.Web.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190512093630_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,7 +176,7 @@ namespace HRAssistant.Web.Migrations
 
                     b.Property<Guid>("JobPositionId");
 
-                    b.Property<int>("JobsNumber");
+                    b.Property<int?>("JobsNumber");
 
                     b.Property<decimal?>("Salary");
 

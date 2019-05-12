@@ -5,9 +5,9 @@ using HRAssistant.Web.Admin.Contracts.Shared;
 using HRAssistant.Web.Domain;
 using LiteGuard;
 
-namespace HRAssistant.Web.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases.Mapping
 {
-    public static class JobPositionUpdateExtensions
+    public static class JobPositionMapperExtensions
     {
         public static void Update(this JobPositionEntity entity, JobPosition job)
         {
@@ -56,6 +56,42 @@ namespace HRAssistant.Web.Admin.UseCases
                 default:
                     throw new InvalidOperationException($"Can't create entity for '{question.GetType().Name}' question.");
             }
+        }
+
+        public static Question CreateContractQuestion(this QuestionEntity entity)
+        {
+            Question question;
+            switch (entity)
+            {
+                case InputQuestionEntity inputEntity:
+                    question = new InputQuestion
+                    {
+                        CorrectAnswer = inputEntity.CorrectAnswer
+                    };
+                    break;
+                case SelectQuestionEntity select:
+                    question = new SelectQuestion
+                    {
+                        OneCorrectAnswer = select.OneCorrectAnswer,
+                        Options = select.Options.Select(o => new Option
+                        {
+                            IsCorrect = o.IsCorrect,
+                            Title = o.Title
+                        }).ToArray()
+                    };
+                    break;
+                case GeneralQuestionEntity _:
+                    question = new GeneralQuestion();
+                    break;
+                default:
+                    throw new InvalidOperationException($"Can't create contract model from '{entity.GetType().Name}' entity.");
+            }
+
+            question.OrderIndex = entity.OrderIndex;
+            question.Title = entity.Title;
+            question.Description = entity.Description;
+
+            return question;
         }
     }
 }

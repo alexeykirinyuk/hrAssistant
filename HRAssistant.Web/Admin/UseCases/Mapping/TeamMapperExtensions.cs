@@ -1,7 +1,7 @@
 ﻿using HRAssistant.Web.Admin.Contracts.TeamContracts;
 using HRAssistant.Web.Domain;
 
-namespace HRAssistant.Web.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases.Mapping
 {
     public static class TeamMapperExtensions
     {

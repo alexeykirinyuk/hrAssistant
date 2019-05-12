@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Admin.UseCases.Mapping;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Infrastructure;
 using HRAssistant.Web.Infrastructure.CQRS;

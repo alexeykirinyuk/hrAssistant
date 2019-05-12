@@ -53,7 +53,7 @@ namespace HRAssistant.Web.DataAccess
 
             var vacancy = builder.Entity<VacancyEntity>().ToTable("Vacancy");
             vacancy.HasOne(v => v.Form).WithOne(f => f.Vacancy)
-                .HasForeignKey<VacancyEntity>(v => v.FormId).HasPrincipalKey<FormEntity>(f => f.VacancyId);
+                .HasForeignKey<VacancyEntity>(v => v.FormId);
             vacancy.HasOne(v => v.Team).WithMany(t => t.Vacancies)
                 .HasForeignKey(v => v.TeamId);
             vacancy.HasOne(v => v.JobPosition).WithMany(t => t.Vacancies)

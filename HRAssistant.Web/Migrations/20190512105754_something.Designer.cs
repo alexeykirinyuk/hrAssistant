@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRAssistant.Web.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20190512085135_Initial_Migration")]
-    partial class Initial_Migration
+    [Migration("20190512105754_something")]
+    partial class something
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,8 +39,6 @@ namespace HRAssistant.Web.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
-
-                    b.Property<Guid>("VacancyId");
 
                     b.HasKey("Id");
 
@@ -178,7 +176,7 @@ namespace HRAssistant.Web.Migrations
 
                     b.Property<Guid>("JobPositionId");
 
-                    b.Property<int?>("JobsNumber");
+                    b.Property<int>("JobsNumber");
 
                     b.Property<decimal?>("Salary");
 
@@ -275,7 +273,6 @@ namespace HRAssistant.Web.Migrations
                     b.HasOne("HRAssistant.Web.Domain.FormEntity", "Form")
                         .WithOne("Vacancy")
                         .HasForeignKey("HRAssistant.Web.Domain.VacancyEntity", "FormId")
-                        .HasPrincipalKey("HRAssistant.Web.Domain.FormEntity", "VacancyId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HRAssistant.Web.Domain.JobPositionEntity", "JobPosition")

@@ -3,7 +3,7 @@ using HRAssistant.Web.Admin.Contracts.UserContracts;
 using HRAssistant.Web.Domain;
 using LiteGuard;
 
-namespace HRAssistant.Web.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases.Mapping
 {
     public static class UserOperationExtensions
     {

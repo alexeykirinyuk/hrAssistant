@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Web.Domain
+﻿namespace HRAssistant.Web.Admin.Contracts.VacancyContracts
 {
     public enum VacancyStatus
     {

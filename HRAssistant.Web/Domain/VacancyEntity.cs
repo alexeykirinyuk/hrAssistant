@@ -18,12 +18,12 @@ namespace HRAssistant.Web.Domain
 
         public string CandidateRequirements { get; set; }
 
-        public int? JobsNumber { get; set; }
+        public int JobsNumber { get; set; }
 
         public Guid FormId { get; set; }
         
         public FormEntity Form { get; set; }
 
-        public VacancyStatus Status { get; set; }
+        public VacancyStatusEntity Status { get; set; }
     }
 }

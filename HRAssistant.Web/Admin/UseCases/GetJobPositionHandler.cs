@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
 using HRAssistant.Web.Admin.Contracts.Shared;
+using HRAssistant.Web.Admin.UseCases.Mapping;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using HRAssistant.Web.Infrastructure.CQRS;
@@ -34,46 +35,12 @@ namespace HRAssistant.Web.Admin.UseCases
                     Template = new Template
                     {
                         Description = entity.Template.Description,
-                        Questions = entity.Template.Questions.Select(q => CreateContractQuestion(q)).ToArray()
+                        Questions = entity.Template.Questions.Select(q => q.CreateContractQuestion()).ToArray()
                     }
                 }
             };
         }
 
-        private static Question CreateContractQuestion(QuestionEntity entity)
-        {
-            Question question;
-            switch (entity)
-            {
-                case InputQuestionEntity inputEntity:
-                    question = new InputQuestion
-                    {
-                        CorrectAnswer = inputEntity.CorrectAnswer
-                    };
-                    break;
-                case SelectQuestionEntity select:
-                    question = new SelectQuestion
-                    {
-                        OneCorrectAnswer = select.OneCorrectAnswer,
-                        Options = select.Options.Select(o => new Option
-                        {
-                            IsCorrect = o.IsCorrect,
-                            Title = o.Title
-                        }).ToArray()
-                    };
-                    break;
-                case GeneralQuestionEntity _:
-                    question = new GeneralQuestion();
-                    break;
-                default:
-                    throw new InvalidOperationException($"Can't create contract model from '{entity.GetType().Name}' entity.");
-            }
-
-            question.OrderIndex = entity.OrderIndex;
-            question.Title = entity.Title;
-            question.Description = entity.Description;
-
-            return question;
-        }
+        
     }
 }

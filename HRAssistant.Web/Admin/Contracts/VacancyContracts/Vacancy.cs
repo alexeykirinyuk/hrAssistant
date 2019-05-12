@@ -17,5 +17,7 @@ namespace HRAssistant.Web.Admin.Contracts.VacancyContracts
         public int? JobsNumber { get; set; }
 
         public Form Form { get; set; }
+
+        public VacancyStatus? Status { get; set; }
     }
 }

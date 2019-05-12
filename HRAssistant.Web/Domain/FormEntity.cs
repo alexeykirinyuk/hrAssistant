@@ -11,8 +11,6 @@ namespace HRAssistant.Web.Domain
 
         public List<QuestionEntity> Questions { get; set; }
 
-        public Guid VacancyId { get; set; }
-
         public VacancyEntity Vacancy { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRAssistant.Web.Migrations
 {
-    public partial class Initial_Migration : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,13 +24,11 @@ namespace HRAssistant.Web.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    VacancyId = table.Column<Guid>(nullable: false)
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Form", x => x.Id);
-                    table.UniqueConstraint("AK_Form_VacancyId", x => x.VacancyId);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,7 +177,7 @@ namespace HRAssistant.Web.Migrations
                         name: "FK_Vacancy_Form_FormId",
                         column: x => x.FormId,
                         principalTable: "Form",
-                        principalColumn: "VacancyId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Vacancy_JobPosition_JobPositionId",

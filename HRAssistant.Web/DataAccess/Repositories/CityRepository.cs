@@ -19,10 +19,7 @@ namespace HRAssistant.Web.DataAccess.Repositories
             _context = context;
         }
 
-        public async Task<bool> Exists(Guid id)
-        {
-            return await _context.Cities.AnyAsync(city => city.Id == id);
-        }
+        public async Task<bool> Exists(Guid id) => await _context.Cities.AnyAsync(city => city.Id == id);
 
         public async Task<bool> Exists(string name, Guid? excludeCityId = null)
         {
