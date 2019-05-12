@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using HRAssistant.DataAccess.Core;
-using HRAssistant.DataAccess.Repositories;
-using HRAssistant.Infrastructure;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.DataAccess.Repositories;
+using HRAssistant.Web.Infrastructure;
+using HRAssistant.Web.Infrastructure.CQRS;
 
-namespace HRAssistant
+namespace HRAssistant.Web
 {
     public sealed class AutofacModule : Module
     {

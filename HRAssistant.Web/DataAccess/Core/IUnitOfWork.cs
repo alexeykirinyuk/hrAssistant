@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace HRAssistant.DataAccess.Core
+namespace HRAssistant.Web.DataAccess.Core
 {
     internal interface IUnitOfWork
     {

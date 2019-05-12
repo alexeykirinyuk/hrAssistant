@@ -1,9 +1,9 @@
-﻿using FluentValidation;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 
-namespace HRAssistant.Infrastructure
+namespace HRAssistant.Web.Infrastructure
 {
     public class Validator<TRequest>
     {

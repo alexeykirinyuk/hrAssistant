@@ -1,8 +1,8 @@
-﻿using Autofac;
+﻿using System.Threading.Tasks;
+using Autofac;
 using LiteGuard;
-using System.Threading.Tasks;
 
-namespace HRAssistant.Infrastructure.CQRS
+namespace HRAssistant.Web.Infrastructure.CQRS
 {
     internal sealed class Bus : IBus
     {

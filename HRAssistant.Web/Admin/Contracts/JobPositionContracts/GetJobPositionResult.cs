@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Admin.Contracts.JobPositionContracts
+﻿namespace HRAssistant.Web.Admin.Contracts.JobPositionContracts
 {
     public sealed class GetJobPositionResult
     {

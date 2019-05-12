@@ -1,6 +1,6 @@
-﻿using HRAssistant.Infrastructure.CQRS;
+﻿using HRAssistant.Web.Infrastructure.CQRS;
 
-namespace HRAssistant.Admin.Contracts.JobPositionContracts
+namespace HRAssistant.Web.Admin.Contracts.JobPositionContracts
 {
     public class CreateJobPosition : ICommand<CreateJobPositionResult>
     {

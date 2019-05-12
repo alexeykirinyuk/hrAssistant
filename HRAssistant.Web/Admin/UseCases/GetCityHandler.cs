@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HRAssistant.Infrastructure.CQRS;
 using HRAssistant.Web.Admin.Contracts.CityContracts;
 using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
 namespace HRAssistant.Web.Admin.UseCases

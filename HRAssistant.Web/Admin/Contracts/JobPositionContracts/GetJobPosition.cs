@@ -1,7 +1,7 @@
-﻿using HRAssistant.Infrastructure.CQRS;
-using System;
+﻿using System;
+using HRAssistant.Web.Infrastructure.CQRS;
 
-namespace HRAssistant.Admin.Contracts.JobPositionContracts
+namespace HRAssistant.Web.Admin.Contracts.JobPositionContracts
 {
     public sealed class GetJobPosition : IQuery<GetJobPositionResult>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Infrastructure.CQRS;
 using HRAssistant.Web.Admin.Contracts.TeamContracts;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 using Microsoft.AspNetCore.Mvc;
 

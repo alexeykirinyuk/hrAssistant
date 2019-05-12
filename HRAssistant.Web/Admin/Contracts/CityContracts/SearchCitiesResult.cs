@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HRAssistant.Infrastructure;
+using HRAssistant.Web.Infrastructure;
 
 namespace HRAssistant.Web.Admin.Contracts.CityContracts
 {

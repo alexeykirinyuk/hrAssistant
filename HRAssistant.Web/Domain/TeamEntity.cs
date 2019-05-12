@@ -1,5 +1,5 @@
 ﻿using System;
-using HRAssistant.Domain;
+using System.Collections.Generic;
 
 namespace HRAssistant.Web.Domain
 {
@@ -18,5 +18,7 @@ namespace HRAssistant.Web.Domain
         public CityEntity City { get; set; }
 
         public bool IsBlocked { get; set; }
+
+        public List<VacancyEntity> Vacancies { get; set; }
     }
 }

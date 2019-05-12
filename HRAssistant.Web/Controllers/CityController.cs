@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Infrastructure.CQRS;
 using HRAssistant.Web.Admin.Contracts.CityContracts;
+using HRAssistant.Web.Infrastructure.CQRS;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRAssistant.Web.Controllers

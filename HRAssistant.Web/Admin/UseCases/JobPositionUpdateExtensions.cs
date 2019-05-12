@@ -1,10 +1,11 @@
-﻿using HRAssistant.Admin.Contracts.JobPositionContracts;
-using HRAssistant.Domain;
-using LiteGuard;
-using System;
+﻿using System;
 using System.Linq;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Admin.Contracts.Shared;
+using HRAssistant.Web.Domain;
+using LiteGuard;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     public static class JobPositionUpdateExtensions
     {
@@ -21,7 +22,7 @@ namespace HRAssistant.Admin.UseCases
             templateEntity.Questions.AddRange(job.Template.Questions.Select(q => CreateQuestionEntity(q)));
         }
 
-        private static QuestionEntity CreateQuestionEntity(Question q)
+        public static QuestionEntity CreateQuestionEntity(this Question q)
         {
             var questionEntity = CreateAndInitSpecifiedProperties(q);
             questionEntity.Title = q.Title;

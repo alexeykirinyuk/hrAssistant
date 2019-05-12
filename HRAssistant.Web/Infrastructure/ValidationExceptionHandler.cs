@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace HRAssistant.Infrastructure
+namespace HRAssistant.Web.Infrastructure
 {
     public class ValidationExceptionHandler
     {

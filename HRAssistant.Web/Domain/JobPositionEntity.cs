@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace HRAssistant.Domain
+namespace HRAssistant.Web.Domain
 {
     public sealed class JobPositionEntity
     {
@@ -11,5 +12,7 @@ namespace HRAssistant.Domain
         public Guid TemplateId { get; set; }
 
         public TemplateEntity Template { get; set; }
+
+        public List<VacancyEntity> Vacancies { get; set; }
     }
 }

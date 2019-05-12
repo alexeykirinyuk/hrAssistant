@@ -1,11 +1,8 @@
+using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using HRAssistant.Admin.UseCases;
-using HRAssistant.Admin.UseCases.Validators;
-using HRAssistant.DataAccess;
-using HRAssistant.Infrastructure;
+using HRAssistant.Web.DataAccess;
+using HRAssistant.Web.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +10,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
-namespace HRAssistant
+namespace HRAssistant.Web
 {
     public class Startup
     {

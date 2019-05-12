@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Infrastructure
+﻿namespace HRAssistant.Web.Infrastructure
 {
     public sealed class PageOptions
     {

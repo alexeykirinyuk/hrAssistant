@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.DataAccess.Core;
+using HRAssistant.Web.DataAccess.Core;
 using LiteGuard;
 
-namespace HRAssistant.DataAccess.Repositories
+namespace HRAssistant.Web.DataAccess.Repositories
 {
     internal sealed class UnitOfWork : IUnitOfWork
     {

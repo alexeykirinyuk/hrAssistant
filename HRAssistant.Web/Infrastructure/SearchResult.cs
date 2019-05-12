@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Infrastructure
+﻿namespace HRAssistant.Web.Infrastructure
 {
     public abstract class SearchResult<TSearchItem>
     {

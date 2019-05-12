@@ -1,8 +1,9 @@
 ﻿using System;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace HRAssistant.Admin.Contracts.JobPositionContracts.Converters
+namespace HRAssistant.Web.Admin.Contracts.Shared.Converters
 {
     public sealed class QuestionConverter : JsonConverter
     {

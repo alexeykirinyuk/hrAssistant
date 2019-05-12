@@ -1,6 +1,6 @@
-﻿using HRAssistant.Infrastructure.CQRS;
+﻿using HRAssistant.Web.Infrastructure.CQRS;
 
-namespace HRAssistant.Admin.Contracts.UserContracts
+namespace HRAssistant.Web.Admin.Contracts.UserContracts
 {
     public sealed class UpdateUser : ICommand
     {

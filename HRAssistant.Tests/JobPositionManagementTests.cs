@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HRAssistant.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Admin.Contracts.Shared;
 using Xunit;
 
 namespace HRAssistant.Tests

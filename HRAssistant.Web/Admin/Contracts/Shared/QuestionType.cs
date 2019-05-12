@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Admin.Contracts.JobPositionContracts
+﻿namespace HRAssistant.Web.Admin.Contracts.Shared
 {
     public enum QuestionType
     {

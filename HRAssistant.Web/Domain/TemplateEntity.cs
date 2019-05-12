@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HRAssistant.Domain
+namespace HRAssistant.Web.Domain
 {
     public sealed class TemplateEntity
     {

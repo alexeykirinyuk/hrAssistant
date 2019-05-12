@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Admin.Contracts.UserContracts
+﻿namespace HRAssistant.Web.Admin.Contracts.UserContracts
 {
     public enum Role
     {

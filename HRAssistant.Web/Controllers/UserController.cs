@@ -1,11 +1,10 @@
 using System.Threading.Tasks;
-using HRAssistant.Admin.Contracts;
-using HRAssistant.Admin.Contracts.UserContracts;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HRAssistant.Controllers
+namespace HRAssistant.Web.Controllers
 {
     [Route("api/[controller]")]
     public class UserController : Controller

@@ -1,9 +1,7 @@
-﻿using HRAssistant.Domain;
-using HRAssistant.Web.Admin.Contracts.CityContracts;
-using HRAssistant.Web.Domain;
+﻿using HRAssistant.Web.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRAssistant.DataAccess
+namespace HRAssistant.Web.DataAccess
 {
     public sealed class DatabaseContext : DbContext
     {
@@ -14,6 +12,8 @@ namespace HRAssistant.DataAccess
         public DbSet<CityEntity> Cities { get; set; }
 
         public DbSet<TeamEntity> Teams { get; set; }
+
+        public DbSet<VacancyEntity> Vacancies { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
@@ -50,6 +50,18 @@ namespace HRAssistant.DataAccess
                 .HasForeignKey(t => t.CityId);
             team.HasOne(t => t.TeamLead).WithMany(u => u.TeamLeadTeams)
                 .HasForeignKey(t => t.TeamLeadId);
+
+            var vacancy = builder.Entity<VacancyEntity>().ToTable("Vacancy");
+            vacancy.HasOne(v => v.Form).WithOne(f => f.Vacancy)
+                .HasForeignKey<VacancyEntity>(v => v.FormId).HasPrincipalKey<FormEntity>(f => f.VacancyId);
+            vacancy.HasOne(v => v.Team).WithMany(t => t.Vacancies)
+                .HasForeignKey(v => v.TeamId);
+            vacancy.HasOne(v => v.JobPosition).WithMany(t => t.Vacancies)
+                .HasForeignKey(v => v.JobPositionId);
+
+            builder.Entity<FormEntity>().ToTable("Form")
+                .HasMany(f => f.Questions).WithOne(q => q.Form)
+                .HasForeignKey(q => q.FormId);
         }
     }
 }

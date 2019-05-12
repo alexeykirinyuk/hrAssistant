@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Domain
+﻿namespace HRAssistant.Web.Domain
 {
     public enum RoleEntity
     {

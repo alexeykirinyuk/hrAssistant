@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using HRAssistant.DataAccess;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using LiteGuard;

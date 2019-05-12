@@ -1,5 +1,5 @@
 ﻿using System;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web.Infrastructure.CQRS;
 
 namespace HRAssistant.Web.Admin.Contracts.CityContracts
 {

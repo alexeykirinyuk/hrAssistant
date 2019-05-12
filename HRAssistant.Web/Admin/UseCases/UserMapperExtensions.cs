@@ -1,10 +1,9 @@
-﻿using HRAssistant.Admin.Contracts;
-using HRAssistant.Domain;
+﻿using System;
+using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Domain;
 using LiteGuard;
-using System;
-using HRAssistant.Admin.Contracts.UserContracts;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     public static class UserOperationExtensions
     {

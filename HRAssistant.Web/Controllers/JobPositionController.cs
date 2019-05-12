@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Admin.Contracts.JobPositionContracts;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HRAssistant.Controllers
+namespace HRAssistant.Web.Controllers
 {
     [Route("api/[controller]")]
     public class JobPositionController : Controller

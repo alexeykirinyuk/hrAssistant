@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using HRAssistant.Infrastructure;
-using HRAssistant.Infrastructure.CQRS;
 using HRAssistant.Web.Admin.Contracts.TeamContracts;
 using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Infrastructure;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
 namespace HRAssistant.Web.Admin.UseCases

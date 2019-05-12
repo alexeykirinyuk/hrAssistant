@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HRAssistant.Admin.Contracts.JobPositionContracts;
-using HRAssistant.DataAccess.Core;
-using HRAssistant.Domain;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Domain;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     internal sealed class CreateJobPositionHandler : ICommandHandler<CreateJobPosition, CreateJobPositionResult>
     {

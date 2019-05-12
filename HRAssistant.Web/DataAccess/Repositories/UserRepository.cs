@@ -1,12 +1,12 @@
-﻿using HRAssistant.DataAccess.Core;
-using HRAssistant.Domain;
-using LiteGuard;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Domain;
+using LiteGuard;
+using Microsoft.EntityFrameworkCore;
 
-namespace HRAssistant.DataAccess.Repositories
+namespace HRAssistant.Web.DataAccess.Repositories
 {
     internal sealed class UserRepository : IUserRepository
     {

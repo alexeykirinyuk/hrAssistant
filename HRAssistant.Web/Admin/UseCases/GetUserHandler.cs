@@ -1,12 +1,10 @@
-﻿using HRAssistant.Admin.Contracts;
-using HRAssistant.DataAccess.Core;
-using HRAssistant.Infrastructure.CQRS;
+﻿using System.Threading.Tasks;
+using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
-using System.Threading;
-using System.Threading.Tasks;
-using HRAssistant.Admin.Contracts.UserContracts;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     internal sealed class GetUserHandler : IQueryHandler<GetUser, GetUserResult>
     {

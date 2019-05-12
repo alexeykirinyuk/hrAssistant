@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Domain
+﻿namespace HRAssistant.Web.Domain
 {
     public sealed class GeneralQuestionEntity : QuestionEntity
     {

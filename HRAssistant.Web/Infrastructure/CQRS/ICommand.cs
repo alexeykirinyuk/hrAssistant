@@ -1,4 +1,4 @@
-﻿namespace HRAssistant.Infrastructure.CQRS
+﻿namespace HRAssistant.Web.Infrastructure.CQRS
 {
     public interface ICommand
     {

@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
-using HRAssistant.Admin.Contracts;
-using HRAssistant.Admin.Contracts.UserContracts;
-using HRAssistant.DataAccess.Core;
+using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.DataAccess.Core;
 
-namespace HRAssistant.Admin.UseCases.Validators
+namespace HRAssistant.Web.Admin.UseCases.Validators
 {
     internal sealed class AddUserValidator : AbstractValidator<AddUser>
     {

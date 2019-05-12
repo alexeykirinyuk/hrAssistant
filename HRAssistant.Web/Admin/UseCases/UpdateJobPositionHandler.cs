@@ -1,10 +1,10 @@
-﻿using HRAssistant.Admin.Contracts.JobPositionContracts;
-using HRAssistant.DataAccess.Core;
-using HRAssistant.Infrastructure.CQRS;
+﻿using System.Threading.Tasks;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
-using System.Threading.Tasks;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     internal sealed class UpdateJobPositionHandler : ICommandHandler<UpdateJobPosition>
     {

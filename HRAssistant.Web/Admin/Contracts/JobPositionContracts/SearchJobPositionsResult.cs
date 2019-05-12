@@ -1,10 +1,6 @@
-﻿using HRAssistant.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HRAssistant.Web.Infrastructure;
 
-namespace HRAssistant.Admin.Contracts.JobPositionContracts
+namespace HRAssistant.Web.Admin.Contracts.JobPositionContracts
 {
     public sealed class SearchJobPositionsResult : SearchResult<SearchJobPositionItem>
     {

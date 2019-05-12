@@ -1,14 +1,12 @@
 ﻿using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using HRAssistant.Admin.Contracts;
-using HRAssistant.Admin.Contracts.UserContracts;
-using HRAssistant.DataAccess.Core;
-using HRAssistant.Infrastructure;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Infrastructure;
+using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     internal sealed class SearchUsersHandler : IQueryHandler<SearchUsers, SearchUsersResult>
     {

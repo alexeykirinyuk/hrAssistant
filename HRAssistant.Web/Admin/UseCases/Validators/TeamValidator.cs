@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
-using HRAssistant.DataAccess.Core;
 using HRAssistant.Web.Admin.Contracts.TeamContracts;
 using HRAssistant.Web.DataAccess.Core;
 

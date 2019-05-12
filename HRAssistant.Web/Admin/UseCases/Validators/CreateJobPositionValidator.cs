@@ -1,8 +1,7 @@
 ﻿using FluentValidation;
-using HRAssistant.Admin.Contracts.JobPositionContracts;
-using System.Collections.Generic;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
 
-namespace HRAssistant.Admin.UseCases.Validators
+namespace HRAssistant.Web.Admin.UseCases.Validators
 {
     internal sealed class CreateJobPositionValidator : AbstractValidator<CreateJobPosition>
     {

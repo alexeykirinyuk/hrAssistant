@@ -1,4 +1,4 @@
-﻿using HRAssistant.Infrastructure;
+﻿using HRAssistant.Web.Infrastructure;
 
 namespace HRAssistant.Web.Admin.Contracts.CityContracts
 {

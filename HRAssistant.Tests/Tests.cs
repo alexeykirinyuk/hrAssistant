@@ -1,7 +1,8 @@
 ﻿using System;
 using Autofac;
-using HRAssistant.DataAccess;
-using HRAssistant.Infrastructure.CQRS;
+using HRAssistant.Web;
+using HRAssistant.Web.DataAccess;
+using HRAssistant.Web.Infrastructure.CQRS;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRAssistant.Tests
@@ -16,6 +17,7 @@ namespace HRAssistant.Tests
         private bool _isDisposed;
 
         protected IBus Bus { get; }
+        protected TestApi TestApi { get; }
 
         protected Tests()
         {
@@ -27,10 +29,12 @@ namespace HRAssistant.Tests
 
             context.RegisterType<DatabaseContext>().AsSelf().InstancePerLifetimeScope();
             context.RegisterInstance(options);
+            context.RegisterType<TestApi>();
             _container = context.Build();
             _lifetimeScope = _container.BeginLifetimeScope();
 
             Bus = _container.Resolve<IBus>();
+            TestApi = _container.Resolve<TestApi>();
         }
 
         public void Dispose()

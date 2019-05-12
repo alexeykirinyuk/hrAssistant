@@ -1,9 +1,9 @@
-﻿using HRAssistant.Domain;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using HRAssistant.Web.Domain;
 
-namespace HRAssistant.DataAccess.Core
+namespace HRAssistant.Web.DataAccess.Core
 {
     internal interface IUserRepository
     {

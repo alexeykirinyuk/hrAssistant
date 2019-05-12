@@ -1,4 +1,6 @@
-﻿namespace HRAssistant.Admin.Contracts.JobPositionContracts
+﻿using HRAssistant.Web.Admin.Contracts.Shared;
+
+namespace HRAssistant.Web.Admin.Contracts.JobPositionContracts
 {
     public sealed class GeneralQuestion : Question
     {

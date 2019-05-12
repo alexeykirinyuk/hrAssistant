@@ -1,6 +1,6 @@
-﻿using HRAssistant.Infrastructure;
+﻿using HRAssistant.Web.Infrastructure;
 
-namespace HRAssistant.Admin.Contracts.UserContracts
+namespace HRAssistant.Web.Admin.Contracts.UserContracts
 {
     public sealed class SearchUsers : SearchRequest<SearchUsersResult>
     {

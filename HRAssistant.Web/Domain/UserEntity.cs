@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using HRAssistant.Web.Domain;
 
-namespace HRAssistant.Domain
+namespace HRAssistant.Web.Domain
 {
     public sealed class UserEntity
     {

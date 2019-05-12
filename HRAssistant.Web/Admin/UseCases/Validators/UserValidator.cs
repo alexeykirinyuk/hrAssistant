@@ -1,8 +1,7 @@
 ﻿using FluentValidation;
-using HRAssistant.Admin.Contracts;
-using HRAssistant.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Admin.Contracts.UserContracts;
 
-namespace HRAssistant.Admin.UseCases.Validators
+namespace HRAssistant.Web.Admin.UseCases.Validators
 {
     public sealed class UserValidator : AbstractValidator<User>
     {

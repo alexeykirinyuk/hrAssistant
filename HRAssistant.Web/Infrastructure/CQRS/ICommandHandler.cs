@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace HRAssistant.Infrastructure.CQRS
+namespace HRAssistant.Web.Infrastructure.CQRS
 {
     public interface ICommandHandler<TCommand>
         where TCommand : ICommand

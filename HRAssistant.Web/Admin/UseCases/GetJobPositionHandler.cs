@@ -1,13 +1,14 @@
-﻿using HRAssistant.Admin.Contracts.JobPositionContracts;
-using HRAssistant.DataAccess.Core;
-using HRAssistant.Domain;
-using HRAssistant.Infrastructure.CQRS;
-using LiteGuard;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Admin.Contracts.Shared;
+using HRAssistant.Web.DataAccess.Core;
+using HRAssistant.Web.Domain;
+using HRAssistant.Web.Infrastructure.CQRS;
+using LiteGuard;
 
-namespace HRAssistant.Admin.UseCases
+namespace HRAssistant.Web.Admin.UseCases
 {
     internal sealed class GetJobPositionHandler : IQueryHandler<GetJobPosition, GetJobPositionResult>
     {
