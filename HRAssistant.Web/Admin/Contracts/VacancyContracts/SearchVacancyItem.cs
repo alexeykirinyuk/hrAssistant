@@ -6,7 +6,11 @@ namespace HRAssistant.Web.Admin.Contracts.VacancyContracts
     {
         public Guid VacancyId { get; set; }
 
+        public Guid TeamId { get; set; }
+
         public string TeamTitle { get; set; }
+
+        public Guid JobPositionId { get; set; }
 
         public string JobPositionTitle { get; set; }
 

@@ -80,6 +80,10 @@ button[mat-button] {
       }
       td {
         color: #dddfe0;
+
+        a {
+          color: #dddfe0;
+        }
       }
 
       &.clickable:hover {

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { SearchUserItem } from 'src/app/user-management/users/SearchUserItem';
 import { City } from 'src/app/city-management/City';
 import { SearchResults } from 'src/app/libs/search-results';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-team',
@@ -22,7 +23,8 @@ export class TeamComponent implements OnInit {
         private _http: HttpClient,
         @Inject('BASE_URL') private _baseUrl: string,
         private _route: ActivatedRoute,
-        private _router: Router) {
+        private _router: Router,
+        private _location: Location) {
     }
 
     async ngOnInit(): Promise<void> {
@@ -69,7 +71,7 @@ export class TeamComponent implements OnInit {
     }
 
     public async cancel(): Promise<void> {
-        await this._router.navigate(["teams"]);
+        await this._location.back();
     }
 }
 

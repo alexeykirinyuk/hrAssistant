@@ -14,6 +14,7 @@ import { InputQuestion } from '../models/InputQuestion';
 import { SelectQuestion } from '../models/SelectQuestion';
 import { Option } from '../models/Option';
 import { EnumUtils } from 'src/app/utils/EnumUtils';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-job-position',
@@ -28,7 +29,8 @@ export class JobPositionComponent implements OnInit {
         private _http: HttpClient,
         @Inject('BASE_URL') private _baseUrl: string,
         private _route: ActivatedRoute,
-        private _router: Router) {
+        private _router: Router,
+        private _location: Location) {
     }
 
     async ngOnInit(): Promise<void> {
@@ -72,7 +74,7 @@ export class JobPositionComponent implements OnInit {
     }
 
     public async cancel(): Promise<void> {
-        await this._router.navigate(["jobPositions"]);
+        await this._location.back();
     }
 
     public addGeneralQuestion(): void {

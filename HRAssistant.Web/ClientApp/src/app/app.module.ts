@@ -15,6 +15,7 @@ import { CitisComponent } from './city-management/cities/cities.component';
 import { CityComponent } from './city-management/city/city.component';
 import { TeamsComponent } from './team-management/teams/teams.component';
 import { TeamComponent } from './team-management/team/team.component';
+import { VacanciesComponent } from './vacancy-management/vacancies/vacancies.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TeamComponent } from './team-management/team/team.component';
     CitisComponent,
     CityComponent,
     TeamsComponent,
-    TeamComponent
+    TeamComponent,
+    VacanciesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,6 +58,9 @@ import { TeamComponent } from './team-management/team/team.component';
       { path: 'teams', component: TeamsComponent },
       { path: 'team/:id', component: TeamComponent },
       { path: 'team', component: TeamComponent },
+
+      { path: 'vacancies/:pageIndex', component: VacanciesComponent },
+      { path: 'vacancies', component: VacanciesComponent },
 
     ])
   ],

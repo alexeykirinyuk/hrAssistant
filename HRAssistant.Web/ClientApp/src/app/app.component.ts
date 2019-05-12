@@ -31,6 +31,10 @@ export class AppComponent {
     await this.navigateTo("teams");
   }
 
+  public async vacancyManagement(): Promise<void> {
+    await this.navigateTo("vacancies");
+  }
+
   private async navigateTo(page: string) {
     await this.sidenav.close();
     await this._router.navigate([page]);
