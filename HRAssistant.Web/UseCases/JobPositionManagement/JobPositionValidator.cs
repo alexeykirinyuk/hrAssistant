@@ -14,7 +14,9 @@ namespace HRAssistant.Web.UseCases.JobPositionManagement
                     RuleFor(t => t.Template.Description).NotNull();
                     RuleForEach(t => t.Template.Questions)
                         .Must(q => !string.IsNullOrEmpty(q.Title)).WithMessage("Question Title can't be null or empty.")
-                        .Must(q => q.OrderIndex.HasValue).WithMessage("Question must be has order index.");
+                        .Must(q => q.OrderIndex.HasValue).WithMessage("Question must be has order index.")
+                        .Must(q => q.MaxAnswerSeconds.HasValue && q.MaxAnswerSeconds > 0)
+                        .WithMessage("Количество секунд на вопрос должно быть задано и не может быть меньше нуля");
                 });
         }
     }

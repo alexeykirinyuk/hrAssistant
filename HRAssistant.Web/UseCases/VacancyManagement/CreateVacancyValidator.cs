@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using FluentValidation;
-using HRAssistant.Web.Admin.Contracts.VacancyContracts;
+using HRAssistant.Web.Contracts.VacancyManagement;
 using LiteGuard;
 
-namespace HRAssistant.Web.Admin.UseCases.Validators
+namespace HRAssistant.Web.UseCases.VacancyManagement
 {
     internal sealed class CreateVacancyValidator : AbstractValidator<CreateVacancy>
     {

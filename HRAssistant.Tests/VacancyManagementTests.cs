@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
-using HRAssistant.Web.Admin.Contracts.TeamContracts;
-using HRAssistant.Web.Admin.Contracts.VacancyContracts;
+using HRAssistant.Web.Contracts.JobPositionManagement;
+using HRAssistant.Web.Contracts.TeamManagement;
+using HRAssistant.Web.Contracts.VacancyManagement;
 using Xunit;
 
 namespace HRAssistant.Tests

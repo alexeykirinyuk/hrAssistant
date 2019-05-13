@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HRAssistant.Web.Admin.Contracts.CityContracts;
+using HRAssistant.Web.Contracts.CityManagement;
 using Xunit;
 
 namespace HRAssistant.Tests

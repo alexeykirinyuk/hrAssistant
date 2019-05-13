@@ -28,6 +28,7 @@ namespace HRAssistant.Web.UseCases.JobPositionManagement
             questionEntity.Title = q.Title;
             questionEntity.OrderIndex = q.OrderIndex.Value;
             questionEntity.Description = q.Description;
+            questionEntity.MaxAnswerSeconds = q.MaxAnswerSeconds.Value;
 
             return questionEntity;
         }
@@ -90,6 +91,7 @@ namespace HRAssistant.Web.UseCases.JobPositionManagement
             question.OrderIndex = entity.OrderIndex;
             question.Title = entity.Title;
             question.Description = entity.Description;
+            question.MaxAnswerSeconds = entity.MaxAnswerSeconds;
 
             return question;
         }

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using HRAssistant.Web.Admin.Contracts.VacancyContracts;
+﻿using System.Threading.Tasks;
+using HRAssistant.Web.Contracts.VacancyManagement;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
-namespace HRAssistant.Web.Admin.UseCases
+namespace HRAssistant.Web.UseCases.VacancyManagement
 {
     internal sealed class CloseVacancyHandler : ICommandHandler<CloseVacancy>
     {

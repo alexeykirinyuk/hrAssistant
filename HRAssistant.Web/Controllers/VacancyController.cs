@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Web.Admin.Contracts.VacancyContracts;
+using HRAssistant.Web.Contracts.VacancyManagement;
 using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 using Microsoft.AspNetCore.Mvc;

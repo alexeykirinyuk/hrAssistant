@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HRAssistant.Web.Admin.Contracts.VacancyContracts
+namespace HRAssistant.Web.Contracts.VacancyManagement
 {
     public sealed class SearchVacancyItem
     {

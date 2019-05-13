@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
+using HRAssistant.Web.Contracts.JobPositionManagement;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Infrastructure;
 using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
-namespace HRAssistant.Web.Admin.UseCases
+namespace HRAssistant.Web.UseCases.JobPositionManagement
 {
     internal sealed class SearchJobPositionsHandler : IQueryHandler<SearchJobPositions, SearchJobPositionsResult>
     {

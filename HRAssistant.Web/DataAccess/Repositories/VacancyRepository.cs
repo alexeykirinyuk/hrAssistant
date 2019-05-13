@@ -33,7 +33,8 @@ namespace HRAssistant.Web.DataAccess.Repositories
 
         public Task<VacancyEntity> Get(Guid vacancyId)
         {
-            var entity = _databaseContext.Vacancies.FindAsync(vacancyId);
+            var entity = _databaseContext.Vacancies.SingleOrDefaultAsync(v => v.Id == vacancyId);
+
             if (entity == null)
             {
                 throw new InvalidOperationException($"Vacancy with id '{vacancyId}' was not found.");

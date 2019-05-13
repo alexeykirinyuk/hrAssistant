@@ -10,6 +10,8 @@ namespace HRAssistant.Web.Contracts.Shared
 
         public string Description { get; set; }
 
+        public int? MaxAnswerSeconds { get; set; }
+
         public int? OrderIndex { get; set; }
 
         public abstract QuestionType QuestionType { get; }

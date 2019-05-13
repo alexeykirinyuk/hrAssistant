@@ -1,7 +1,7 @@
 ﻿using System;
 using HRAssistant.Web.Infrastructure;
 
-namespace HRAssistant.Web.Admin.Contracts.VacancyContracts
+namespace HRAssistant.Web.Contracts.VacancyManagement
 {
     public class SearchVacancies : SearchRequest<SearchVacanciesResult>
     {

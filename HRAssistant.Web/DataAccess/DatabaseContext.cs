@@ -15,6 +15,8 @@ namespace HRAssistant.Web.DataAccess
 
         public DbSet<VacancyEntity> Vacancies { get; set; }
 
+        public DbSet<InterviewEntity> Interviews { get; set; }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
@@ -62,6 +64,12 @@ namespace HRAssistant.Web.DataAccess
             builder.Entity<FormEntity>().ToTable("Form")
                 .HasMany(f => f.Questions).WithOne(q => q.Form)
                 .HasForeignKey(q => q.FormId);
+
+            builder.Entity<InterviewEntity>().ToTable("Interview")
+                .HasOne(i => i.Candidate).WithOne(i => i.Interview)
+                .HasForeignKey<InterviewEntity>(i => i.CandidateId);
+
+            builder.Entity<CandidateEntity>().ToTable("Candidate");
         }
     }
 }

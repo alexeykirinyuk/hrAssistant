@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Web.Admin.Contracts.VacancyContracts;
-using HRAssistant.Web.Admin.UseCases.Mapping;
+using HRAssistant.Web.Contracts.VacancyManagement;
 using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Infrastructure.CQRS;
+using HRAssistant.Web.UseCases.Mapping;
 using LiteGuard;
 
-namespace HRAssistant.Web.Admin.UseCases
+namespace HRAssistant.Web.UseCases.VacancyManagement
 {
     internal sealed class UpdateVacancyHandler : ICommandHandler<UpdateVacancy>
     {

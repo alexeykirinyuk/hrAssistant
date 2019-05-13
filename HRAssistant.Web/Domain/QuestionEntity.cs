@@ -18,6 +18,8 @@ namespace HRAssistant.Web.Domain
 
         public string Description { get; set; }
 
+        public int MaxAnswerSeconds { get; set; }
+
         public int OrderIndex { get; set; }
     }
 }
