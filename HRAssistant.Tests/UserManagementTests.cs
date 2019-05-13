@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Contracts.UserManagement;
 using Xunit;
 
 namespace HRAssistant.Tests

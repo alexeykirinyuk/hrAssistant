@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Web.Admin.Contracts.CityContracts;
-using HRAssistant.Web.Admin.Contracts.JobPositionContracts;
-using HRAssistant.Web.Admin.Contracts.Shared;
-using HRAssistant.Web.Admin.Contracts.TeamContracts;
-using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Contracts.CityManagement;
+using HRAssistant.Web.Contracts.JobPositionManagement;
+using HRAssistant.Web.Contracts.Shared;
+using HRAssistant.Web.Contracts.TeamManagement;
+using HRAssistant.Web.Contracts.UserManagement;
 using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 

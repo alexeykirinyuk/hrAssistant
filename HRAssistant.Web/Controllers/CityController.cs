@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HRAssistant.Web.Admin.Contracts.CityContracts;
+using HRAssistant.Web.Contracts.CityManagement;
 using HRAssistant.Web.Infrastructure.CQRS;
 using Microsoft.AspNetCore.Mvc;
 

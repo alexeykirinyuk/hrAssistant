@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HRAssistant.Web.Admin.Contracts.CityContracts;
-using HRAssistant.Web.Admin.Contracts.TeamContracts;
-using HRAssistant.Web.Admin.Contracts.UserContracts;
+using HRAssistant.Web.Contracts.CityManagement;
+using HRAssistant.Web.Contracts.TeamManagement;
+using HRAssistant.Web.Contracts.UserManagement;
 using Xunit;
 
 namespace HRAssistant.Tests
