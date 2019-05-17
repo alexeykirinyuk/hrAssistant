@@ -6,13 +6,17 @@ namespace HRAssistant.Web.Domain
     {
         public Guid Id { get; set; }
 
+        public Guid VacancyId { get; set; }
+
+        public VacancyEntity Vacancy { get; set; }
+
         public Guid CandidateId { get; set; }
 
         public CandidateEntity Candidate { get; set; }
 
-        public DateTime? StartUtcTime { get; set; }
+        public Guid? FormSagaId { get; set; }
 
-        public DateTime? EndUtcTime { get; set; }
+        public FormSagaEntity FormSagaEntity { get; set; }
 
         public InterviewStatusEntity Status { get; set; }
     }

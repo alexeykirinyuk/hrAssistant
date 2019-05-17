@@ -29,6 +29,7 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
             _interviewRepository.Add(new InterviewEntity
             {
                 Id = interviewId,
+                VacancyId = command.VacancyId.Value,
                 Candidate = new CandidateEntity
                 {
                     Email = command.Email,
