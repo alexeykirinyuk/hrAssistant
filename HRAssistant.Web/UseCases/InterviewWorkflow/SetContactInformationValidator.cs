@@ -7,7 +7,7 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 {
     internal sealed class SetContactInformationValidator : AbstractValidator<SetContactInformation>
     {
-        private Regex _validPhoneRegex = new Regex(@"((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}");
+        private Regex _validPhoneRegex = new Regex(@"^([0-9]{11})$");
 
         public SetContactInformationValidator(IVacancyRepository vacancyRepository)
         {

@@ -7,8 +7,6 @@ namespace HRAssistant.Web.Contracts.InterviewWorkflow
     {
         public Guid? InterviewId { get; set; }
 
-        public Guid? QuestionId { get; set; }
-
         public string Value { get; set; }
 
         public Guid[] Values { get; set; }

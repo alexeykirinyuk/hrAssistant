@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HRAssistant.Web.Domain
 {
@@ -25,5 +26,7 @@ namespace HRAssistant.Web.Domain
         public FormEntity Form { get; set; }
 
         public VacancyStatusEntity Status { get; set; }
+
+        public List<InterviewEntity> Interviews { get; set; }
     }
 }

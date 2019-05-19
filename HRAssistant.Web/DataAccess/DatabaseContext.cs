@@ -1,4 +1,5 @@
-﻿using HRAssistant.Web.Domain;
+﻿using HRAssistant.Web.DataAccess.Configurations;
+using HRAssistant.Web.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRAssistant.Web.DataAccess
@@ -65,11 +66,16 @@ namespace HRAssistant.Web.DataAccess
                 .HasMany(f => f.Questions).WithOne(q => q.Form)
                 .HasForeignKey(q => q.FormId);
 
-            builder.Entity<InterviewEntity>().ToTable("Interview")
-                .HasOne(i => i.Candidate).WithOne(i => i.Interview)
-                .HasForeignKey<InterviewEntity>(i => i.CandidateId);
-
+            builder.ApplyConfiguration(new InterviewConfiguration());
             builder.Entity<CandidateEntity>().ToTable("Candidate");
+
+            builder.ApplyConfiguration(new FormSagaConfiguration());
+            builder.ApplyConfiguration(new QuestionSagaConfiguration());
+            builder.Entity<SelectQuestionSagaEntity>().HasBaseType<QuestionSagaEntity>();
+            builder.Entity<InputQuestionSagaEntity>().HasBaseType<QuestionSagaEntity>();
+            builder.Entity<GeneralQuestionSagaEntity>().HasBaseType<QuestionSagaEntity>();
+
+            base.OnModelCreating(builder);
         }
     }
 }

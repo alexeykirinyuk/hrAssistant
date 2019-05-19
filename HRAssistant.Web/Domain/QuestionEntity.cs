@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HRAssistant.Web.Domain
 {
@@ -21,5 +22,7 @@ namespace HRAssistant.Web.Domain
         public int MaxAnswerSeconds { get; set; }
 
         public int OrderIndex { get; set; }
+
+        public List<QuestionSagaEntity> Sagas { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using HRAssistant.Web.Contracts.JobPositionManagement;
 using HRAssistant.Web.Contracts.Shared;
 using HRAssistant.Web.Contracts.TeamManagement;
 using HRAssistant.Web.Contracts.UserManagement;
+using HRAssistant.Web.Contracts.VacancyManagement;
 using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
 
@@ -111,6 +112,29 @@ namespace HRAssistant.Tests
                 .JobPositionId;
 
             return jobPosition;
+        }
+
+        public async Task<Vacancy> CreateVacancy(JobPosition jobPosition, Team team)
+        {
+            var vacancy = new Vacancy
+            {
+                JobPositionId = jobPosition.Id,
+                TeamId = team.Id,
+                Salary = 70_000,
+                CandidateRequirements = "Some requriements",
+                JobsNumber = 50,
+                Form = new Form
+                {
+                    Description = jobPosition.Template.Description,
+                    Questions = jobPosition.Template.Questions
+                }
+            };
+
+            vacancy.Id = (await _bus.Request(new CreateVacancy {Vacancy = vacancy}))
+                .VacancyId;
+            await _bus.Request(new OpenVacancy {VacancyId = vacancy.Id});
+
+            return vacancy;
         }
     }
 }

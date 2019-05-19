@@ -26,17 +26,17 @@ namespace HRAssistant.Web.DataAccess.Repositories
             _context.Interviews.Add(interview);
         }
 
-        public async Task<bool> Exists(Guid id)
+        public async Task<bool> Exists(Guid interviewId)
         {
-            return await _context.Interviews.AnyAsync(interview => interview.CandidateId == id);
+            return await _context.Interviews.AnyAsync(interview => interview.Id == interviewId);
         }
 
-        public async Task<InterviewEntity> Get(Guid id)
+        public async Task<InterviewEntity> Get(Guid interviewId)
         {
-            var interview = await _context.Interviews.SingleOrDefaultAsync(i => i.Id == id);
+            var interview = await _context.Interviews.SingleOrDefaultAsync(i => i.Id == interviewId);
             if (interview == null)
             {
-                throw new InvalidOperationException($"Interview with id '{id}' was not found.");
+                throw new InvalidOperationException($"Interview with id '{interviewId}' was not found.");
             }
 
             return interview;

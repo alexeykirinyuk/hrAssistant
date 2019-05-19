@@ -12,10 +12,10 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 {
     internal sealed class StartQuestionHandler : ICommandHandler<StartQuestion, StartQuestionResult>
     {
-        private readonly InterviewRepository _interviewRepository;
+        private readonly IInterviewRepository _interviewRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public StartQuestionHandler(InterviewRepository interviewRepository, IUnitOfWork unitOfWork)
+        public StartQuestionHandler(IInterviewRepository interviewRepository, IUnitOfWork unitOfWork)
         {
             Guard.AgainstNullArgument(nameof(interviewRepository), interviewRepository);
             Guard.AgainstNullArgument(nameof(unitOfWork), unitOfWork);

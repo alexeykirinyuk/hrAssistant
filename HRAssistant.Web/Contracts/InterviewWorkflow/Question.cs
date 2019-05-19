@@ -6,7 +6,6 @@ namespace HRAssistant.Web.Contracts.InterviewWorkflow
     [JsonConverter(typeof(QuestionConverter))]
     public abstract class Question
     {
-        
         public string Title { get; set; }
 
         public string Description { get; set; }

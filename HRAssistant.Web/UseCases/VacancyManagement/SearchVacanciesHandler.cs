@@ -5,6 +5,7 @@ using HRAssistant.Web.DataAccess.Core;
 using HRAssistant.Web.Domain;
 using HRAssistant.Web.Infrastructure;
 using HRAssistant.Web.Infrastructure.CQRS;
+using HRAssistant.Web.UseCases.Mapping;
 using LiteGuard;
 
 namespace HRAssistant.Web.UseCases.VacancyManagement

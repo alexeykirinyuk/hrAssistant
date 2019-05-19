@@ -8,7 +8,7 @@ namespace HRAssistant.Web.DataAccess.Core
     {
         void Add(InterviewEntity interview);
 
-        Task<bool> Exists(Guid id);
+        Task<bool> Exists(Guid interviewId);
 
         Task<InterviewEntity> Get(Guid interviewId);
 
