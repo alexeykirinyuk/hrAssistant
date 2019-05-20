@@ -22,6 +22,9 @@ namespace HRAssistant.Web.UseCases.TeamManagement
         public Task<SearchTeamsResult> Handle(SearchTeams query) =>
             _teamRepository.Search()
                 .FilterBy(query.Title, entity => entity.Title.Contains(query.Title))
+                .FilterBy(query.CityTitle, entity => entity.City.Name.Contains(query.CityTitle))
+                .FilterBy(query.IsBlocked, entity => entity.IsBlocked == query.IsBlocked)
+                .FilterBy(query.TeamLeadFullName, entity => (entity.TeamLead.FirstName + " " + entity.TeamLead.LastName).Contains(query.TeamLeadFullName))
                 .Select(t => new SearchTeamItem
                 {
                     TeamId = t.Id,
