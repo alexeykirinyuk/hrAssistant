@@ -5,6 +5,6 @@ namespace HRAssistant.Web.Contracts.JobPositionManagement
 {
     public sealed class GetJobPosition : IQuery<GetJobPositionResult>
     {
-        public Guid JobPositionId { get; set; }
+        public Guid? JobPositionId { get; set; }
     }
 }
