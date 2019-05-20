@@ -7,6 +7,7 @@ using HRAssistant.Web.DataAccess.Repositories;
 using HRAssistant.Web.Domain;
 using HRAssistant.Web.Infrastructure.CQRS;
 using LiteGuard;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace HRAssistant.Web.UseCases.InterviewWorkflow
 {
@@ -26,7 +27,10 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 
         public async Task<StartQuestionResult> Handle(StartQuestion command)
         {
-            var currentQuestion = await _interviewRepository.GetCurrentQuestion(command.InterviewId.Value);
+            var interview = await _interviewRepository.Get(command.InterviewId.Value);
+            var questions = interview.GetQuestions().ToArray();
+            var currentQuestion = questions.GetCurrent();
+
             if (currentQuestion.Status == QuestionSagaStatusEntity.NotStarted)
             {
                 currentQuestion.Status = QuestionSagaStatusEntity.Started;
@@ -37,7 +41,9 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 
             return new StartQuestionResult
             {
-                Question = Convert(currentQuestion.Question)
+                Question = Convert(currentQuestion.Question),
+                Index = questions.IndexOf(currentQuestion) + 1,
+                TotalCount = questions.Length
             };
         }
 

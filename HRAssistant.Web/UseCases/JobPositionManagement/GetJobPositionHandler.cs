@@ -20,7 +20,7 @@ namespace HRAssistant.Web.UseCases.JobPositionManagement
 
         public async Task<GetJobPositionResult> Handle(GetJobPosition query)
         {
-            var entity = await _jobPositionRepository.Get(query.JobPositionId);
+            var entity = await _jobPositionRepository.Get(query.JobPositionId.Value);
 
             return new GetJobPositionResult
             {

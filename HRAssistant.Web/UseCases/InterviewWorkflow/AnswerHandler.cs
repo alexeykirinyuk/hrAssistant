@@ -25,7 +25,8 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 
         public async Task<AnswerResult> Handle(Answer command)
         {
-            var currentQuestion = await _interviewRepository.GetCurrentQuestion(command.InterviewId.Value);
+            var interview = await _interviewRepository.Get(command.InterviewId.Value);
+            var currentQuestion = interview.GetQuestions().GetCurrent();
 
             switch (currentQuestion)
             {
@@ -44,6 +45,11 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 
             currentQuestion.EndUtcTime = DateTime.UtcNow;
             currentQuestion.Status = QuestionSagaStatusEntity.Answered;
+
+            if (!interview.GetQuestions().Any(question => question.IsOpen()))
+            {
+                interview.Status = InterviewStatusEntity.End;
+            }
 
             await _unitOfWork.SaveChangesAsync();
 

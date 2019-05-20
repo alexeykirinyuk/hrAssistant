@@ -14,7 +14,11 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
                 {
                     RuleFor(m => m.InterviewId)
                         .MustAsync((id, token) => interviewRepository.Exists(id.Value))
-                        .WithMessage("Интервью с Id '{PropertValue}' не сущетсвует.");
+                        .WithMessage(i => $"Интервью с Id '{i.InterviewId}' не сущетсвует.");
+
+                    RuleFor(m => m.InterviewId)
+                        .MustAsync((id, token) => interviewRepository.HasOpenQuestion(id.Value))
+                        .WithMessage("Интервью не содержит открытых вопросов.");
                 });
         }
     }

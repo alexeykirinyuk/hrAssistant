@@ -12,8 +12,6 @@ namespace HRAssistant.Web.DataAccess.Core
 
         Task<InterviewEntity> Get(Guid interviewId);
 
-        Task<bool> HasNotCompletedQuestions(Guid interviewId);
-
-        Task<QuestionSagaEntity> GetCurrentQuestion(Guid interviewId);
+        Task<bool> HasOpenQuestion(Guid interviewId);
     }
 }

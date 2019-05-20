@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using HRAssistant.Web.Contracts.InterviewWorkflow;
 using HRAssistant.Web.DataAccess.Core;
 
@@ -18,6 +14,10 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
                     RuleFor(m => m.InterviewId)
                         .MustAsync((id, token) => interviewRepository.Exists(id.Value))
                         .WithMessage("Интервью с Id 'PropertyValue' не существет.");
+
+                    RuleFor(m => m.InterviewId)
+                        .MustAsync((id, token) => interviewRepository.HasOpenQuestion(id.Value))
+                        .WithMessage("Интервью не содержит открытых вопросов.");
                 });
 
             RuleFor(m => m.Value)

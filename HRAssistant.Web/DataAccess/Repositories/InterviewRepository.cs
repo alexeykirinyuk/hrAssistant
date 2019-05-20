@@ -42,31 +42,14 @@ namespace HRAssistant.Web.DataAccess.Repositories
             return interview;
         }
 
-        public async Task<bool> HasNotCompletedQuestions(Guid interviewId)
+        public async Task<bool> HasOpenQuestion(Guid interviewId)
         {
             return await _context.Interviews
                 .Where(interview => interview.Id == interviewId)
                 .SelectMany(interview => interview.FormSagaEntity.Questions)
                 .OrderBy(question => question.Question.OrderIndex)
                 .AnyAsync(question => question.Status == QuestionSagaStatusEntity.Started ||
-                                                 question.Status == QuestionSagaStatusEntity.NotStarted);
-        }
-
-        public async Task<QuestionSagaEntity> GetCurrentQuestion(Guid interviewId)
-        {
-            var result = await _context.Interviews
-                .Where(interview => interview.Id == interviewId)
-                .SelectMany(interview => interview.FormSagaEntity.Questions)
-                .OrderBy(question => question.Question.OrderIndex)
-                .FirstOrDefaultAsync(question => question.Status == QuestionSagaStatusEntity.Started ||
-                                            question.Status == QuestionSagaStatusEntity.NotStarted);
-
-            if (result == null)
-            {
-                throw new InvalidOperationException("Interview does not have not completed questions.");
-            }
-
-            return result;
+                                      question.Status == QuestionSagaStatusEntity.NotStarted);
         }
     }
 }
