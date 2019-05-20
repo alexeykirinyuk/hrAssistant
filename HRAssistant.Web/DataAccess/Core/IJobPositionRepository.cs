@@ -9,6 +9,8 @@ namespace HRAssistant.Web.DataAccess.Core
     {
         Task<bool> Exists(Guid jobPositionId);
 
+        Task<bool> Exists(string title, Guid? excludeJobPositionId = null);
+
         void Add(JobPositionEntity entity);
 
         Task<JobPositionEntity> Get(Guid jobPositionId);

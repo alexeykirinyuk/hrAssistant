@@ -15,7 +15,7 @@ namespace HRAssistant.Tests
         {
             _jobPosition = new JobPosition
             {
-                Title = "Junior Java Developer",
+                Title = UniqueUtils.MakeUnique("Junior Java Developer"),
                 Template = new Template
                 {
                     Description = "Please, answer on questions",
@@ -25,19 +25,21 @@ namespace HRAssistant.Tests
                         {
                             Title = "How are you?",
                             Description = "Please, describe your filling.",
-                            OrderIndex = 0
+                            OrderIndex = 0,
+                            MaxAnswerSeconds = 60
                         },
                         new InputQuestion
                         {
                             Title = "1 + 2",
                             Description = "Please answer:",
                             OrderIndex = 1,
-                            CorrectAnswer = "3"
+                            CorrectAnswer = "3",
+                            MaxAnswerSeconds = 60
                         },
                         new SelectQuestion
                         {
                             Title = "1 + 3",
-                            Description = "",
+                            Description = "Some Description",
                             OrderIndex = 2,
                             Options = new[]
                             {
@@ -45,7 +47,8 @@ namespace HRAssistant.Tests
                                 new Option {Title = "5", IsCorrect = false},
                                 new Option {Title = "4.0", IsCorrect = true}
                             },
-                            OneCorrectAnswer = false
+                            OneCorrectAnswer = false,
+                            MaxAnswerSeconds = 60
                         }
                     }
                 }
@@ -65,12 +68,12 @@ namespace HRAssistant.Tests
                 .Should()
                 .BeEquivalentTo(_jobPosition);
 
-            var allPositions = (await Bus.Execute(new SearchJobPositions()))
+            var allPositions = (await Bus.Execute(new SearchJobPositions {Title = _jobPosition.Title}))
                 .Items;
 
             allPositions
                 .Should()
-                .ContainSingle(p => p.JobPositionId == _jobPosition.Id.Value);
+                .ContainSingle();
 
             var position = allPositions.Single(p => p.JobPositionId == _jobPosition.Id.Value);
             position.Title.Should().Be(_jobPosition.Title);
@@ -81,7 +84,7 @@ namespace HRAssistant.Tests
         {
             _jobPosition.Id = (await Bus.Request(new CreateJobPosition {JobPosition = _jobPosition}))
                 .JobPositionId;
-            _jobPosition.Title = "New Title";
+            _jobPosition.Title = UniqueUtils.MakeUnique("New Title");
             _jobPosition.Template = new Template
             {
                 Description = "Changed Description",
@@ -91,13 +94,16 @@ namespace HRAssistant.Tests
                     {
                         Title = "New Question",
                         Description = "New Description",
-                        OrderIndex = 1
+                        OrderIndex = 1,
+                        MaxAnswerSeconds = 60
                     },
                     new InputQuestion
                     {
                         Title = "Changed Question",
                         Description = "Changed Description",
-                        OrderIndex = 2
+                        CorrectAnswer = "Changed Answer",
+                        OrderIndex = 2,
+                        MaxAnswerSeconds = 60
                     }
                 }
             };

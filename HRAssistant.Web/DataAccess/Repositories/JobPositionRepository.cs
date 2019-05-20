@@ -31,6 +31,14 @@ namespace HRAssistant.Web.DataAccess.Repositories
             return await _context.JobPositions.AnyAsync(p => p.Id == jobPositionId);
         }
 
+        public Task<bool> Exists(string title, Guid? excludeJobPositionId = null)
+        {
+            Guard.AgainstNullArgument(title, nameof(title));
+
+            return _context.JobPositions
+                .AnyAsync(p => p.Title == title && (!excludeJobPositionId.HasValue || p.Id != excludeJobPositionId));
+        }
+
         public async Task<JobPositionEntity> Get(Guid jobPositionId)
         {
             var entity = await _context.JobPositions

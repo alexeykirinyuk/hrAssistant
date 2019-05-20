@@ -3,7 +3,7 @@ using LiteGuard;
 
 namespace HRAssistant.Tests
 {
-    public static class UniqueHelper
+    public static class UniqueUtils
     {
         public static string MakeUnique(string value)
         {

@@ -25,7 +25,7 @@ namespace HRAssistant.Tests
         {
             var city = new City
             {
-                Name = UniqueHelper.MakeUnique("Novosibirsk")
+                Name = UniqueUtils.MakeUnique("Novosibirsk")
             };
 
             city.Id = (await _bus.Request(new CreateCity {City = city}))
@@ -43,7 +43,7 @@ namespace HRAssistant.Tests
                 IsBlocked = false,
                 Password = "testpassword",
                 Role = Role.HR,
-                Username = UniqueHelper.MakeUnique("akirinyuk")
+                Username = UniqueUtils.MakeUnique("akirinyuk")
             };
 
             user.Id = (await _bus.Request(new AddUser {User = user}))
@@ -56,7 +56,7 @@ namespace HRAssistant.Tests
         {
             var team = new Team
             {
-                Title = UniqueHelper.MakeUnique("Alexey Kirinyuk team"),
+                Title = UniqueUtils.MakeUnique("Alexey Kirinyuk team"),
                 CityId = city.Id,
                 TeamLeadId = teamLead.Id,
                 IsBlocked = false
@@ -72,7 +72,7 @@ namespace HRAssistant.Tests
         {
             var jobPosition = new JobPosition
             {
-                Title = "Junior Java Developer",
+                Title = UniqueUtils.MakeUnique("Junior Java Developer"),
                 Template = new Template
                 {
                     Description = "Please, answer on questions",
@@ -82,19 +82,21 @@ namespace HRAssistant.Tests
                         {
                             Title = "How are you?",
                             Description = "Please, describe your filling.",
-                            OrderIndex = 0
+                            OrderIndex = 0,
+                            MaxAnswerSeconds = 50
                         },
                         new InputQuestion
                         {
                             Title = "1 + 2",
                             Description = "Please answer:",
                             OrderIndex = 1,
-                            CorrectAnswer = "3"
+                            CorrectAnswer = "3",
+                            MaxAnswerSeconds = 50
                         },
                         new SelectQuestion
                         {
                             Title = "1 + 3",
-                            Description = "",
+                            Description = "Please selectамана",
                             OrderIndex = 2,
                             Options = new[]
                             {
@@ -102,7 +104,8 @@ namespace HRAssistant.Tests
                                 new Option {Title = "5", IsCorrect = false},
                                 new Option {Title = "4.0", IsCorrect = true}
                             },
-                            OneCorrectAnswer = false
+                            OneCorrectAnswer = false,
+                            MaxAnswerSeconds = 50
                         }
                     }
                 }

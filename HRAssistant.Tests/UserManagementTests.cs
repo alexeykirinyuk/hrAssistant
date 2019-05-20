@@ -20,7 +20,7 @@ namespace HRAssistant.Tests
                 IsBlocked = false,
                 Password = "testpassword",
                 Role = Role.HR,
-                Username = UniqueHelper.MakeUnique("akirinyuk")
+                Username = UniqueUtils.MakeUnique("akirinyuk")
             };
         }
 
@@ -63,7 +63,7 @@ namespace HRAssistant.Tests
             _testUser.LastName = "Antonov";
             _testUser.Password = "testpwd2";
             _testUser.Role = Role.TeamLead;
-            _testUser.Username = UniqueHelper.MakeUnique("rantonov");
+            _testUser.Username = UniqueUtils.MakeUnique("rantonov");
 
             await Bus.Request(new UpdateUser {User = _testUser});
 

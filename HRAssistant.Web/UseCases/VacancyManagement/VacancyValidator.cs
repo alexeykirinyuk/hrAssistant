@@ -8,8 +8,8 @@ namespace HRAssistant.Web.UseCases.VacancyManagement
     {
         public VacancyValidator(IJobPositionRepository jobPositionRepository, ITeamRepository teamRepository)
         {
-            RuleFor(m => m.Form).NotNull()
-                .WithMessage(Messages.NotNull);
+            RuleFor(m => m.Form).NotNull().WithMessage(Messages.NotNull)
+                .SetValidator(new FormValidator());
 
             RuleFor(m => m.Status).Null()
                 .WithMessage("Нельзя задавать статус вакансии.");

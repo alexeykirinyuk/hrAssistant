@@ -69,6 +69,10 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
                     throw new InvalidOperationException($"Can't cast '{entity.GetType().FullName}'.");
             }
 
+            question.Title = entity.Title;
+            question.Description = entity.Description;
+            question.OrderIndex = entity.OrderIndex;
+
             return question;
         }
     }

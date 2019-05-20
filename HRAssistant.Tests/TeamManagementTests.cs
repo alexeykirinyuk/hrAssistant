@@ -23,12 +23,12 @@ namespace HRAssistant.Tests
                 IsBlocked = false,
                 Password = "testpassword",
                 Role = Role.HR,
-                Username = UniqueHelper.MakeUnique("akirinyuk")
+                Username = UniqueUtils.MakeUnique("akirinyuk")
             };
 
             _city = new City
             {
-                Name = UniqueHelper.MakeUnique("Karaganda")
+                Name = UniqueUtils.MakeUnique("Karaganda")
             };
 
             _city.Id = (await Bus.Request(new CreateCity {City = _city})).CityId;
@@ -36,7 +36,7 @@ namespace HRAssistant.Tests
 
             _team = new Team
             {
-                Title = UniqueHelper.MakeUnique("Alexey Kirinyuk team"),
+                Title = UniqueUtils.MakeUnique("Alexey Kirinyuk team"),
                 CityId = _city.Id,
                 TeamLeadId = _user.Id,
                 IsBlocked = false
@@ -70,17 +70,17 @@ namespace HRAssistant.Tests
                 IsBlocked = false,
                 Password = "testpassword",
                 Role = Role.TeamLead,
-                Username = UniqueHelper.MakeUnique("rgusev")
+                Username = UniqueUtils.MakeUnique("rgusev")
             };
             _user.Id = (await Bus.Request(new AddUser {User = _user})).UserId;
 
             _city = new City
             {
-                Name = UniqueHelper.MakeUnique("Novosibirsk")
+                Name = UniqueUtils.MakeUnique("Novosibirsk")
             };
             _city.Id = (await Bus.Request(new CreateCity { City = _city })).CityId;
 
-            _team.Title = UniqueHelper.MakeUnique("New Team Title");
+            _team.Title = UniqueUtils.MakeUnique("New Team Title");
             _team.CityId = _city.Id;
             _team.TeamLeadId = _user.Id;
             _team.IsBlocked = true;

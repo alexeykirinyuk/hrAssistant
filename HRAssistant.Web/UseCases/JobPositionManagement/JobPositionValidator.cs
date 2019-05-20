@@ -1,5 +1,7 @@
-﻿using FluentValidation;
+﻿using System.Linq;
+using FluentValidation;
 using HRAssistant.Web.Contracts.JobPositionManagement;
+using HRAssistant.Web.Contracts.Shared;
 
 namespace HRAssistant.Web.UseCases.JobPositionManagement
 {
@@ -11,12 +13,20 @@ namespace HRAssistant.Web.UseCases.JobPositionManagement
             RuleFor(p => p.Template).NotNull()
                 .DependentRules(() =>
                 {
-                    RuleFor(t => t.Template.Description).NotNull();
-                    RuleForEach(t => t.Template.Questions)
-                        .Must(q => !string.IsNullOrEmpty(q.Title)).WithMessage("Question Title can't be null or empty.")
-                        .Must(q => q.OrderIndex.HasValue).WithMessage("Question must be has order index.")
-                        .Must(q => q.MaxAnswerSeconds.HasValue && q.MaxAnswerSeconds > 0)
-                        .WithMessage("Количество секунд на вопрос должно быть задано и не может быть меньше нуля");
+                    RuleFor(t => t.Template.Description).NotEmpty().WithMessage(Messages.NotEmpty);
+
+                    RuleForEach(t => t.Template.Questions.OfType<SelectQuestion>())
+                        .SetValidator(new SelectQuestionValidator());
+
+                    RuleForEach(t => t.Template.Questions.OfType<GeneralQuestion>())
+                        .SetValidator(new GeneralQuestionValidator());
+
+                    RuleForEach(t => t.Template.Questions.OfType<InputQuestion>())
+                        .SetValidator(new InputQuestionValidator());
+
+                    RuleFor(t => t.Template.Questions.Select((question, index) => new {question, index}).ToArray())
+                        .Must(items => items.Any(item => !items.Any(i => i.question.OrderIndex.Value == item.question.OrderIndex && i.index != item.index)))
+                        .WithMessage("OrderIndex не могут совпадать у двух вопросов.");
                 });
         }
     }

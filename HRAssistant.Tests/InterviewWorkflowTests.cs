@@ -45,7 +45,7 @@ namespace HRAssistant.Tests
             _thirdQuestion = new SelectQuestion
             {
                 Title = "1 + 3",
-                Description = "",
+                Description = "Please select one of the following:",
                 OrderIndex = 2,
                 Options = new[]
                 {
@@ -58,7 +58,7 @@ namespace HRAssistant.Tests
             };
             var jobPosition = new JobPosition
             {
-                Title = "Junior Java Developer",
+                Title = UniqueUtils.MakeUnique("Junior Java Developer"),
                 Template = new Template
                 {
                     Description = "Please, answer on questions",
@@ -127,7 +127,7 @@ namespace HRAssistant.Tests
             var question = (await Bus.Request(new StartQuestion {InterviewId = _interviewId})).Question;
 
             question.Should().NotBeNull();
-            question.Should().BeAssignableTo<InputQuestion>();
+            question.Should().BeAssignableTo<Web.Contracts.InterviewWorkflow.InputQuestion>();
 
             var inputQuestion = (Web.Contracts.InterviewWorkflow.InputQuestion) question;
             inputQuestion
@@ -151,13 +151,13 @@ namespace HRAssistant.Tests
             var question = (await Bus.Request(new StartQuestion {InterviewId = _interviewId})).Question;
 
             question.Should().NotBeNull();
-            question.Should().BeAssignableTo<SelectQuestion>();
+            question.Should().BeAssignableTo<Web.Contracts.InterviewWorkflow.SelectQuestion>();
 
             var selectQuestion = (Web.Contracts.InterviewWorkflow.SelectQuestion) question;
             selectQuestion
                 .Should()
                 .BeEquivalentTo(_thirdQuestion, options => options
-                    .Excluding(g => g.MaxAnswerSeconds));
+                    .ExcludingMissingMembers());
 
             var result = await Bus.Request(new Answer
             {
@@ -169,9 +169,6 @@ namespace HRAssistant.Tests
             result.Result.Should().BeFalse();
         }
 
-        public Task DisposeAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task DisposeAsync() => Task.CompletedTask;
     }
 }

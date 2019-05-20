@@ -19,7 +19,7 @@ namespace HRAssistant.Web.UseCases.JobPositionManagement
             var templateEntity = entity.Template;
             templateEntity.Description = job.Template.Description;
             templateEntity.Questions.Clear();
-            templateEntity.Questions.AddRange(job.Template.Questions.Select(q => CreateQuestionEntity(q)));
+            templateEntity.Questions.AddRange(job.Template.Questions.Select(CreateQuestionEntity));
         }
 
         public static QuestionEntity CreateQuestionEntity(this Question q)

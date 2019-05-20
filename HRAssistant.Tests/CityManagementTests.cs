@@ -14,7 +14,7 @@ namespace HRAssistant.Tests
         {
             _city = new City
             {
-                Name = UniqueHelper.MakeUnique("Karaganda")
+                Name = UniqueUtils.MakeUnique("Karaganda")
             };
         }
 
@@ -36,7 +36,7 @@ namespace HRAssistant.Tests
         {
             _city.Id = (await Bus.Request(new CreateCity {City = _city})).CityId;
 
-            _city.Name = UniqueHelper.MakeUnique("Moskow");
+            _city.Name = UniqueUtils.MakeUnique("Moskow");
             var updateCity = new UpdateCity {City = _city};
             await Bus.Request(updateCity);
 

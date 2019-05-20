@@ -60,7 +60,7 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
         {
             inputQuestionSagaEntity.Answer = command.Value;
             inputQuestionSagaEntity.Result = string.Equals(
-                inputQuestionSagaEntity.Question.Title,
+                ((InputQuestionEntity)inputQuestionSagaEntity.Question).CorrectAnswer,
                 command.Value,
                 StringComparison.InvariantCultureIgnoreCase);
         }

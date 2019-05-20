@@ -51,12 +51,14 @@ namespace HRAssistant.Tests
             updateVacancy.Salary = 100_000;
             updateVacancy.Status = null;
             updateVacancy.Form.Description = "New Description";
-            updateVacancy.Form.Questions = updateVacancy.Form.Questions.Append(new GeneralQuestion
-            {
-                Title = "Ещё один вопрос",
-                Description = "Некоторое описание",
-                OrderIndex = 10
-            }).ToArray();
+            updateVacancy.Form.Questions = updateVacancy.Form.Questions
+                .Append(new GeneralQuestion
+                {
+                    Title = "Ещё один вопрос",
+                    Description = "Некоторое описание",
+                    OrderIndex = 10,
+                    MaxAnswerSeconds = 60
+                }).ToArray();
 
             await Bus.Request(new UpdateVacancy {Vacancy = updateVacancy});
 
@@ -91,14 +93,14 @@ namespace HRAssistant.Tests
         {
             var city = await TestApi.CreateCity();
             var teamLead = await TestApi.CreateUser();
-            
+
             return await TestApi.CreateTeam(teamLead, city);
         }
 
         public async Task InitializeAsync()
         {
             _jobPositionId = (await TestApi.CreateJobPosition()).Id.Value;
-           _teamId = (await CreateTeam()).Id.Value;
+            _teamId = (await CreateTeam()).Id.Value;
         }
 
         public Task DisposeAsync() => Task.CompletedTask;

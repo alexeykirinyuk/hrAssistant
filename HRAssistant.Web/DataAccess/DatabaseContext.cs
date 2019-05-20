@@ -1,6 +1,7 @@
 ﻿using HRAssistant.Web.DataAccess.Configurations;
 using HRAssistant.Web.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace HRAssistant.Web.DataAccess
 {
@@ -21,6 +22,12 @@ namespace HRAssistant.Web.DataAccess
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning));
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
