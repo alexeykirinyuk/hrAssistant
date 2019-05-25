@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchResults } from '../../libs/search-results';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SearchTeamItem } from './SearchTeamItem';
 
 @Component({
   selector: 'app-teams',
@@ -46,12 +47,4 @@ export class TeamsComponent implements OnInit {
   public async open(team: SearchTeamItem): Promise<void> {
     await this._router.navigate(["team", team.teamId]);
   }
-}
-
-interface SearchTeamItem {
-    teamId: string;
-    title: string;
-    cityTitle: string;
-    teamLeadFullName: string;
-    isBlocked: string;
 }

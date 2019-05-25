@@ -1,5 +1,4 @@
-﻿using System;
-using HRAssistant.Web.Domain;
+﻿using HRAssistant.Web.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +18,9 @@ namespace HRAssistant.Web.DataAccess.Configurations
 
             builder.HasOne(i => i.FormSagaEntity).WithOne(f => f.Interview)
                 .HasForeignKey<InterviewEntity>(i => i.FormSagaId);
+
+            builder.HasOne(i => i.Result).WithOne(r => r.Interview)
+                .HasForeignKey<InterviewEntity>(i => i.ResultId);
         }
     }
 }

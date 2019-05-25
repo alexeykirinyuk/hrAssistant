@@ -16,6 +16,7 @@ import { CityComponent } from './city-management/city/city.component';
 import { TeamsComponent } from './team-management/teams/teams.component';
 import { TeamComponent } from './team-management/team/team.component';
 import { VacanciesComponent } from './vacancy-management/vacancies/vacancies.component';
+import { VacancyComponent } from './vacancy-management/vacancy/vacancy.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VacanciesComponent } from './vacancy-management/vacancies/vacancies.com
     CityComponent,
     TeamsComponent,
     TeamComponent,
-    VacanciesComponent
+    VacanciesComponent,
+    VacancyComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -61,7 +63,8 @@ import { VacanciesComponent } from './vacancy-management/vacancies/vacancies.com
 
       { path: 'vacancies/:pageIndex', component: VacanciesComponent },
       { path: 'vacancies', component: VacanciesComponent },
-
+      { path: 'vacancy/:id', component: VacancyComponent },
+      { path: 'vacancy', component: VacancyComponent },
     ])
   ],
   providers: [],

@@ -30,10 +30,10 @@ namespace HRAssistant.Web.Controllers
         [HttpPut]
         public Task Update([FromBody] UpdateVacancy request) => _bus.Request(request);
 
-        [HttpPost("/open/{VacancyId}")]
+        [HttpPost("open/{VacancyId}")]
         public Task Open([FromRoute] OpenVacancy request) => _bus.Request(request);
 
-        [HttpPost("/close/{VacancyId}")]
+        [HttpPost("close/{VacancyId}")]
         public Task Close([FromRoute] CloseVacancy request) => _bus.Request(request);
     }
 }

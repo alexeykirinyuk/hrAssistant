@@ -1,0 +1,145 @@
+<div class="outer">
+    <div class="crud-header">
+        <div class="left-div">
+            <h1>Новая вакансия</h1>
+        </div>
+        <mat-divider class="divider"></mat-divider>
+    </div>
+
+    <p *ngIf="!vacancy"><em>Loading...</em></p>
+    <div *ngIf="vacancy">
+        <mat-horizontal-stepper>
+            <mat-step label="Информация о вакансии">
+                <div class="form-div">
+                    <div class="header">
+                        <h1>Информация о вакансии</h1>
+                    </div>
+                    <div class="fields">
+                        <mat-form-field id="team-field" class="input-field">
+                            <mat-select placeholder="Команда" [(value)]="vacancy.teamId">
+                                <mat-option *ngFor="let team of teams" [value]="team.teamId">
+                                    {{team.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field id="job-position-field" class="input-field">
+                            <mat-select placeholder="Должность" [(value)]="vacancy.jobPositionId">
+                                <mat-option *ngFor="let jobPosition of jobPositions"
+                                    [value]="jobPosition.jobPositionId">
+                                    {{jobPosition.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field id="salary-field" class="input-field">
+                            <input matInput placeholder="Зарплата (руб)" type="number" [(ngModel)]="vacancy.salary"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field id="candidate-requirements-field" class="input-field">
+                            <textarea matInput placeholder="Требования к кандидату"
+                                [(ngModel)]="vacancy.candidateRequirements" required></textarea>
+                        </mat-form-field>
+                        <mat-form-field id="jobsNumber-field" class="input-field">
+                            <input matInput placeholder="Количество рабочих мест" type="number"
+                                [(ngModel)]="vacancy.jobsNumber" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step label="Форма опроса">
+                <mat-form-field id="description-field" class="input-field">
+                    <textarea matInput placeholder="Описание к форме" [(ngModel)]="vacancy.form.description"
+                        required></textarea>
+                </mat-form-field>
+                <div>
+                    <button class="button" [matMenuTriggerFor]="menu" mat-button>Добавить вопрос</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="addGeneralQuestion()">Основной вопрос</button>
+                        <button mat-menu-item (click)="addInputQuestion()">Вопрос с ответом</button>
+                        <button mat-menu-item (click)="addSelectQuestion()">Вопрос с выбором ответа</button>
+                    </mat-menu>
+                    <div cdkDropList class="question-list" (cdkDropListDropped)="drop($event)">
+                        <div class="question-box" *ngFor="let question of vacancy.form.questions" cdkDrag>
+                            <div *ngIf="isGeneralQuestion(question)" class="form-div-question">
+                                <div class="header">
+                                    <h1>Основной вопрос</h1>
+                                </div>
+                                <mat-form-field class="input-field">
+                                    <input matInput placeholder="Название вопроса" [(ngModel)]="question.title"
+                                        required>
+                                </mat-form-field>
+                                <div>
+                                    <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
+                                </div>
+                            </div>
+                            <div *ngIf="isInputQuestion(question)" class="form-div-question">
+                                <div class="header">
+                                    <h1>Вопрос с ответом</h1>
+                                </div>
+                                <mat-form-field class="input-field">
+                                    <input matInput placeholder="Название вопроса" [(ngModel)]="question.title"
+                                        required>
+                                </mat-form-field>
+                                <div>
+                                    <mat-form-field class="input-field">
+                                        <input matInput placeholder="Верный ответ" [(ngModel)]="question.correctAnswer"
+                                            required>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
+                                </div>
+                            </div>
+                            <div *ngIf="isSelectQuestion(question)" class="form-div-question">
+                                <div class="header">
+                                    <h1>Вопрос с выбором ответа</h1>
+                                </div>
+                                <mat-form-field class="input-field">
+                                    <input matInput placeholder="Название вопроса" [(ngModel)]="question.title"
+                                        required>
+                                </mat-form-field>
+                                <div>
+                                    <button class="button" (click)="addOption(question)" mat-button>Добавить опцию
+                                    </button>
+                                </div>
+                                <div cdkDropList class="answer-list"
+                                    (cdkDropListDropped)="dropOption(question, $event)">
+                                    <div class="answer-box" *ngFor="let option of question.options" cdkDrag>
+                                        <mat-form-field class="input-field">
+                                            <input matInput placeholder="Название опции" [(ngModel)]="option.title"
+                                                required>
+                                        </mat-form-field>
+                                        <mat-checkbox [(ngModel)]="option.isCorrect">Верный ответ?
+                                        </mat-checkbox>
+                                        <div>
+                                            <button type="button" (click)="removeOption(question, option)"
+                                                mat-button>Удалить</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <mat-checkbox [(ngModel)]="question.oneCorrectAnswer">Только один правильный ответ?
+                                </mat-checkbox>
+                                <div>
+                                    <button type="button" (click)="removeQuestion(question)" mat-button>Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step label="Завершить">
+                <div>
+                    <div class="buttons-block">
+                        <button class="yellow-button" type="button" *ngIf="canOpen" (click)="open()" mat-button>Открыть
+                            вакансию</button>
+                        <button type="button" *ngIf="canClose" (click)="close()" mat-button>Закрыть вакансию</button>
+                    </div>
+                    <div class="buttons-block">
+                        <button id="create-button" class="yellow-button" type="button" (click)="submit()"
+                            mat-button>{{buttonText}}</button>
+                        <button id="cancel-button" type="button" (click)="cancel()" mat-button>Отмена изменений</button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</div>

@@ -19,5 +19,9 @@ namespace HRAssistant.Web.Domain
         public FormSagaEntity FormSagaEntity { get; set; }
 
         public InterviewStatusEntity Status { get; set; }
+
+        public Guid ResultId { get; set; }
+
+        public InterviewResultEntity Result { get; set; }
     }
 }

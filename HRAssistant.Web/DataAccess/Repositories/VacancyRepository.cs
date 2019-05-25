@@ -10,30 +10,35 @@ namespace HRAssistant.Web.DataAccess.Repositories
 {
     internal sealed class VacancyRepository : IVacancyRepository
     {
-        private readonly DatabaseContext _databaseContext;
+        private readonly DatabaseContext _context;
 
-        public VacancyRepository(DatabaseContext databaseContext)
+        public VacancyRepository(DatabaseContext context)
         {
-            Guard.AgainstNullArgument(nameof(databaseContext), databaseContext);
+            Guard.AgainstNullArgument(nameof(context), context);
 
-            _databaseContext = databaseContext;
+            _context = context;
         }
 
         public void Add(VacancyEntity vacancy)
         {
             Guard.AgainstNullArgument(nameof(vacancy), vacancy);
 
-            _databaseContext.Vacancies.Add(vacancy);
+            _context.Vacancies.Add(vacancy);
         }
 
         public async Task<bool> Exists(Guid vacancyId)
         {
-            return await _databaseContext.Vacancies.AnyAsync(v => v.Id == vacancyId);
+            return await _context.Vacancies.AnyAsync(v => v.Id == vacancyId);
         }
 
-        public Task<VacancyEntity> Get(Guid vacancyId)
+        public async Task<VacancyEntity> Get(Guid vacancyId)
         {
-            var entity = _databaseContext.Vacancies.SingleOrDefaultAsync(v => v.Id == vacancyId);
+            var entity = await _context.Vacancies
+                .Include(v => v.JobPosition)
+                .Include(v => v.Form)
+                .Include(v => v.Form.Questions)
+                .Include("Form.Questions.Options")
+                .SingleOrDefaultAsync(v => v.Id == vacancyId);
 
             if (entity == null)
             {
@@ -45,7 +50,7 @@ namespace HRAssistant.Web.DataAccess.Repositories
 
         public async Task<VacancyStatusEntity> GetStatus(Guid vacancyId)
         {
-            var vacancyStatus = await _databaseContext.Vacancies
+            var vacancyStatus = await _context.Vacancies
                 .Where(v => v.Id == vacancyId)
                 .Select(v => (VacancyStatusEntity?)v.Status)
                 .SingleOrDefaultAsync();
@@ -58,6 +63,6 @@ namespace HRAssistant.Web.DataAccess.Repositories
             return vacancyStatus.Value;
         }
 
-        public IQueryable<VacancyEntity> Search() => _databaseContext.Vacancies;
+        public IQueryable<VacancyEntity> Search() => _context.Vacancies;
     }
 }

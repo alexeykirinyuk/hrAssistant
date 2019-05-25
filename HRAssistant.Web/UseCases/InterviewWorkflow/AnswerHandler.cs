@@ -46,14 +46,26 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
             currentQuestion.EndUtcTime = DateTime.UtcNow;
             currentQuestion.Status = QuestionSagaStatusEntity.Answered;
 
-            if (!interview.GetQuestions().Any(question => question.IsOpen()))
+            var hasQuestions = interview.GetQuestions().Any(question => question.IsOpen());
+            if (!hasQuestions)
             {
                 interview.Status = InterviewStatusEntity.End;
+                interview.Result = new InterviewResultEntity
+                {
+                    CorrectAnswersCount = interview.GetQuestions()
+                        .Count(q => (q.Result.HasValue && q.Result.Value)),
+                    IncorrectAnswersCount = interview.GetQuestions()
+                        .Count(q => q.Result.HasValue && !q.Result.Value)
+                };
             }
 
             await _unitOfWork.SaveChangesAsync();
 
-            return new AnswerResult {Result = currentQuestion.Result};
+            return new AnswerResult
+            {
+                HasQuestions = hasQuestions,
+                Result = currentQuestion.Result
+            };
         }
 
         private static void Answer(Answer command, GeneralQuestionSagaEntity generalQuestionSagaEntity)

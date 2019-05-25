@@ -12,7 +12,7 @@ namespace HRAssistant.Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
+                .UseIIS()
                 .UseStartup<Startup>();
     }
 }

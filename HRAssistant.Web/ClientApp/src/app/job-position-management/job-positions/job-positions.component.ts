@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchResults } from '../../libs/search-results';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SearchJobPositionItem } from './SearchJobPositionItem';
 
 @Component({
   selector: 'app-job-positions',
@@ -46,9 +47,4 @@ export class JobPositionsComponent implements OnInit {
   public async open(user: SearchJobPositionItem): Promise<void> {
     await this._router.navigate(["jobPosition", user.jobPositionId]);
   }
-}
-
-interface SearchJobPositionItem {
-  jobPositionId: string;
-  title: string;
 }
