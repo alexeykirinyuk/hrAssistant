@@ -44,14 +44,13 @@ namespace HRAssistant.Web.DataAccess
 
             builder.Entity<QuestionEntity>().ToTable("Question");
             builder.Entity<InputQuestionEntity>().HasBaseType<QuestionEntity>();
+            builder.Entity<GeneralQuestionEntity>().HasBaseType<QuestionEntity>();
 
             var selectQuestion = builder.Entity<SelectQuestionEntity>().HasBaseType<QuestionEntity>()
                 .HasMany(q => q.Options).WithOne(o => o.Question)
                 .HasForeignKey(o => o.QuestionId);
 
             var option = builder.Entity<OptionEntity>().ToTable("Option");
-
-            builder.Entity<GeneralQuestionEntity>().ToTable("GeneralQuestion");
 
             builder.Entity<CityEntity>().ToTable("City");
 

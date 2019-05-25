@@ -43,7 +43,7 @@ namespace HRAssistant.Web
 
             // Add database context
             services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             var builder = new ContainerBuilder();
 
