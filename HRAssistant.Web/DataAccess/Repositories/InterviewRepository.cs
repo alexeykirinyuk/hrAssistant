@@ -39,7 +39,7 @@ namespace HRAssistant.Web.DataAccess.Repositories
                 .Include(i => i.Candidate)
                 .Include(i => i.Result)
                 .Include(i => i.FormSagaEntity.Questions)
-                .Include("FormSagaEntity.Questions.Question")
+                .Include("FormSagaEntity.Questions.Question.Options")
                 .Include("FormSagaEntity.Questions.SelectedOptions")
                 .SingleOrDefaultAsync(i => i.Id == interviewId);
             if (interview == null)
@@ -55,7 +55,6 @@ namespace HRAssistant.Web.DataAccess.Repositories
             return await _context.Interviews
                 .Where(interview => interview.Id == interviewId)
                 .SelectMany(interview => interview.FormSagaEntity.Questions)
-                .OrderBy(question => question.Question.OrderIndex)
                 .AnyAsync(question => question.Status == QuestionSagaStatusEntity.Started ||
                                       question.Status == QuestionSagaStatusEntity.NotStarted);
         }

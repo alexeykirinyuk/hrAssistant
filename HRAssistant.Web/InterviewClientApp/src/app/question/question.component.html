@@ -1,0 +1,26 @@
+<div *ngIf="loading"></div>
+<div *ngIf="!loading">
+    <div>Вопрос: {{question.title}}</div>
+    <div>Номер вопроса: {{questionIndex}}/{{totalQuestionsCount}}</div>
+    <div *ngIf="question.questionType == 'Input' || question.questionType == 'General'">
+        <mat-form-field id="answer-field" class="input-field">
+            <textarea matInput placeholder="Ответ" [(ngModel)]="answer" required></textarea>
+        </mat-form-field>
+    </div>
+    <div *ngIf="question.questionType == 'Select' && question.oneCorrectAnswer">
+        <mat-radio-group aria-label="Выбери один ответ" [(ngModel)]="selectedOption">
+            <div>
+                <mat-radio-button *ngFor="let option of question.options" [(value)]="option">{{option.title}}
+                </mat-radio-button>
+            </div>
+        </mat-radio-group>
+    </div>
+    <div *ngIf="question.questionType == 'Select' && !question.oneCorrectAnswer">
+        <mat-checkbox *ngFor="let option of question.options" [(ngModel)]="option.checked">{{option.title}}
+        </mat-checkbox>
+    </div>
+    <div *ngIf="result">Результат: {{result}}</div>
+    <button *ngIf="!result" class="yellow-button" (click)="submit()">Далее</button>
+    <button *ngIf="result && hasNext" class="yellow-button" (click)="next()">Следующий вопрос</button>
+    <button *ngIf="result && !hasNext" class="yellow-button" (click)="complete()">Завершить</button>
+</div>

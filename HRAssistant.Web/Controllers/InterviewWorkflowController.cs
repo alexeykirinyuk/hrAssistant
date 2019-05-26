@@ -18,16 +18,19 @@ namespace HRAssistant.Web.Controllers
             _bus = bus;
         }
 
-        [HttpGet("/vacancy")]
-        public Task<GetVacancyResult> GetVacancy([FromBody] GetVacancy request) => _bus.Execute(request);
+        [HttpGet("vacancy/{VacancyId}")]
+        public Task<GetVacancyResult> GetVacancy([FromRoute] GetVacancy request) => _bus.Execute(request);
 
-        [HttpPost("/contact")]
+        [HttpPost("contact")]
         public Task<SetContactInformationResult> SetContactInformation([FromBody] SetContactInformation request) => _bus.Request(request);
 
-        [HttpPost("/question")]
+        [HttpPost("start")]
+        public Task Start([FromBody] StartInterview request) => _bus.Request(request);
+
+        [HttpPost("question")]
         public Task<StartQuestionResult> StartQuestion([FromBody] StartQuestion request) => _bus.Request(request);
 
-        [HttpPost("/answer")]
+        [HttpPost("answer")]
         public Task<AnswerResult> Answer([FromBody] Answer request) => _bus.Request(request);
     }
 }

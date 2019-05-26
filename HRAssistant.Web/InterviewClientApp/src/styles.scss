@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+  color: #333;
+  font: 13px/20px haas, pragmatica, EllipsisFallback, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.main-table {
+  width: 100%;
+}
+
+.buttons-block {
+  margin-bottom: 15px;
+}
+
+.yellow-button {
+  border: 1px solid #ffdd2d;
+  background-color: #ffdd2d;
+}
+
+button[mat-button] {
+  width: 150px;
+  height: 50px;
+}
+
+.crud-header {
+  .left-div {
+    width: 50%;
+    display: inline-flex;
+  }
+
+  .right-div {
+    display: inline;
+  }
+
+  h1 {
+    display: inline;
+  }
+
+  button {
+    float: right;
+    color: #959ba4;
+
+    &:hover {
+      color: #ffdd2d;
+    }
+
+    div {
+      background: none;
+    }
+  }
+
+  .divider {
+    margin-top: 0 !important;
+  }
+}
+
+.table-wrapper {
+  padding-right: 200px;
+  padding-left: 200px;
+
+  table {
+    background: linear-gradient(to right, #5a656d, #95a6b2);
+    border-radius: 5px;
+
+    tr {
+      th {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      td {
+        color: #dddfe0;
+
+        a {
+          color: #dddfe0;
+        }
+      }
+
+      &.clickable:hover {
+        background: linear-gradient(to right, #6e7b84, #a7b9c6);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.divider {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.outer {
+  width: 100%;
+}
+
+.mat-step-icon-selected {
+  background: #ffdd2d !important;
+  .mat-step-icon-content {
+    color: #333 !important;
+  }
+}
+
+.mat-step-icon-state-edit {
+  background: #ffdd2d !important;
+  .m.mat-step-icon-content {
+    color: #333 !important;
+  }
+}
+
+.mat-icon {
+  color: #333;
+}

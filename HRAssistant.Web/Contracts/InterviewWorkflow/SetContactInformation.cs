@@ -14,5 +14,7 @@ namespace HRAssistant.Web.Contracts.InterviewWorkflow
         public string Phone { get; set; }
 
         public string Email { get; set; }
+
+        public bool? TermsAgreed { get; set; }
     }
 }

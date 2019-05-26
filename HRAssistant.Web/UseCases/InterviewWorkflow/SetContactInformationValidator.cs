@@ -7,7 +7,7 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 {
     internal sealed class SetContactInformationValidator : AbstractValidator<SetContactInformation>
     {
-        private Regex _validPhoneRegex = new Regex(@"^([0-9]{11})$");
+        private readonly Regex _validPhoneRegex = new Regex(@"^([0-9]{11})$");
 
         public SetContactInformationValidator(IVacancyRepository vacancyRepository)
         {
@@ -25,6 +25,9 @@ namespace HRAssistant.Web.UseCases.InterviewWorkflow
 
             RuleFor(m => m.Phone).Must(_validPhoneRegex.IsMatch)
                 .WithMessage("Телефон невалидный.");
+
+            RuleFor(m => m.TermsAgreed).Must(t => t == true)
+                .WithMessage("Необходимо согласиться с правилами.");
         }
     }
 }

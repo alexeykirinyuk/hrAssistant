@@ -16,6 +16,9 @@ namespace HRAssistant.Web
 {
     public class Startup
     {
+        private const string CorsPolicy = "_customPolicy";
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -46,6 +49,12 @@ namespace HRAssistant.Web
             // Add database context
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CorsPolicy, corsPolicyBuilder => corsPolicyBuilder.WithOrigins("http://localhost:4201")
+                    .WithHeaders("Content-type"));
+            });
 
             var builder = new ContainerBuilder();
 
@@ -59,6 +68,8 @@ namespace HRAssistant.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(CorsPolicy);
+
             app.UseValidationExceptionHandler();
 
             app.UseHttpsRedirection();
