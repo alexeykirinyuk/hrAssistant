@@ -20,7 +20,7 @@ namespace HRAssistant.Web.Domain
 
         public InterviewStatusEntity Status { get; set; }
 
-        public Guid ResultId { get; set; }
+        public Guid? ResultId { get; set; }
 
         public InterviewResultEntity Result { get; set; }
     }

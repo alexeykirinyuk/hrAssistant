@@ -1,0 +1,41 @@
+<div *ngIf="!model">Загрузка...</div>
+<div *ngIf="model">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Информация о кандидате
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+            <div> Имя и фамилия: {{model.fullName}} </div>
+            <div> Почтовый адрес: {{model.email}} </div>
+            <div> Телефон: {{model.phone}} </div>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Информация о вакансии
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+            <div> Команда: {{model.teamTitle}} </div>
+            <div> Должность: {{model.jobPositionTitle}} </div>
+            <div> Город: {{model.cityTitle}} </div>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Анкетирование
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+            <div *ngFor="let question of model.questions">
+                <div>Вопрос: {{question.title}}</div>
+                <div [style.color]="getColor(question.result)">Ответ: {{question.title}}</div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</div>

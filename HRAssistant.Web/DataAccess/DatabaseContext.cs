@@ -81,6 +81,8 @@ namespace HRAssistant.Web.DataAccess
             builder.Entity<InputQuestionSagaEntity>().HasBaseType<QuestionSagaEntity>();
             builder.Entity<GeneralQuestionSagaEntity>().HasBaseType<QuestionSagaEntity>();
 
+            builder.Entity<InterviewResultEntity>().ToTable("InterviewResult");
+
             base.OnModelCreating(builder);
         }
     }

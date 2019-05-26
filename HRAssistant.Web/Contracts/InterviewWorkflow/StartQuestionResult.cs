@@ -1,6 +1,4 @@
-﻿using HRAssistant.Web.Contracts.Shared;
-
-namespace HRAssistant.Web.Contracts.InterviewWorkflow
+﻿namespace HRAssistant.Web.Contracts.InterviewWorkflow
 {
     public sealed class StartQuestionResult
     {

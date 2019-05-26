@@ -17,6 +17,8 @@ import { TeamsComponent } from './team-management/teams/teams.component';
 import { TeamComponent } from './team-management/team/team.component';
 import { VacanciesComponent } from './vacancy-management/vacancies/vacancies.component';
 import { VacancyComponent } from './vacancy-management/vacancy/vacancy.component';
+import { InterviewsComponent } from './interview-list/interviews/interviews.component';
+import { InterviewComponent } from './interview-list/interview/interview.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { VacancyComponent } from './vacancy-management/vacancy/vacancy.component
     TeamsComponent,
     TeamComponent,
     VacanciesComponent,
-    VacancyComponent
+    VacancyComponent,
+    InterviewsComponent,
+    InterviewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -65,6 +69,10 @@ import { VacancyComponent } from './vacancy-management/vacancy/vacancy.component
       { path: 'vacancies', component: VacanciesComponent },
       { path: 'vacancy/:id', component: VacancyComponent },
       { path: 'vacancy', component: VacancyComponent },
+
+      { path: 'interviews/:pageIndex', component: InterviewsComponent },
+      { path: 'interviews', component: InterviewsComponent },
+      { path: 'interview/:id', component: InterviewComponent },
     ])
   ],
   providers: [],

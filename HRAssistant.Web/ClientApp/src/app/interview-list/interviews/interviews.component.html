@@ -1,0 +1,39 @@
+<div class="crud-header">
+    <div class="left-div">
+        <h1>Прошедшие интервью</h1>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+</div>
+
+<p *ngIf="!model"><em>Загрузка...</em></p>
+
+<div *ngIf="model">
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="model.items" class="mat-elevation-z8 main-table">
+        <ng-container matColumnDef="jobPositionTitle">
+          <th mat-header-cell *matHeaderCellDef> Должность </th>
+          <td mat-cell *matCellDef="let element"> {{element.jobPositionTitle}} </td>
+        </ng-container>
+        <ng-container matColumnDef="teamTitle">
+          <th mat-header-cell *matHeaderCellDef> Команда </th>
+          <td mat-cell *matCellDef="let element"> {{element.teamTitle}} </td>
+        </ng-container>
+        <ng-container matColumnDef="candidateFullName">
+          <th mat-header-cell *matHeaderCellDef> Кандидат </th>
+          <td mat-cell *matCellDef="let element"> {{element.candidateFullName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="correctAnswersCount">
+          <th mat-header-cell *matHeaderCellDef> Правильные ответы </th>
+          <td mat-cell *matCellDef="let element"> {{element.correctAnswersCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="incorrectAnswersCount">
+          <th mat-header-cell *matHeaderCellDef> Неправильные ответы </th>
+          <td mat-cell *matCellDef="let element"> {{element.incorrectAnswersCount}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;" (click)="open(element)" class="clickable">
+        </tr>
+      </table>
+    </div>
+  </div>

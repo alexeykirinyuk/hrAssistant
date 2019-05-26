@@ -4,14 +4,16 @@ using HRAssistant.Web.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HRAssistant.Web.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190526040912_Added interview result")]
+    partial class Addedinterviewresult
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +84,7 @@ namespace HRAssistant.Web.Migrations
 
                     b.Property<Guid?>("FormSagaId");
 
-                    b.Property<Guid?>("ResultId");
+                    b.Property<Guid>("ResultId");
 
                     b.Property<int>("Status");
 
@@ -98,8 +100,7 @@ namespace HRAssistant.Web.Migrations
                         .HasFilter("[FormSagaId] IS NOT NULL");
 
                     b.HasIndex("ResultId")
-                        .IsUnique()
-                        .HasFilter("[ResultId] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("VacancyId");
 
@@ -373,7 +374,9 @@ namespace HRAssistant.Web.Migrations
 
                     b.HasOne("HRAssistant.Web.Domain.InterviewResultEntity", "Result")
                         .WithOne("Interview")
-                        .HasForeignKey("HRAssistant.Web.Domain.InterviewEntity", "ResultId");
+                        .HasForeignKey("HRAssistant.Web.Domain.InterviewEntity", "ResultId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HRAssistant.Web.Domain.VacancyEntity", "Vacancy")
                         .WithMany("Interviews")

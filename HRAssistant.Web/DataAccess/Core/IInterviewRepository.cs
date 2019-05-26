@@ -1,6 +1,7 @@
-﻿using System;
+﻿using HRAssistant.Web.Domain;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
-using HRAssistant.Web.Domain;
 
 namespace HRAssistant.Web.DataAccess.Core
 {
@@ -13,5 +14,7 @@ namespace HRAssistant.Web.DataAccess.Core
         Task<InterviewEntity> Get(Guid interviewId);
 
         Task<bool> HasOpenQuestion(Guid interviewId);
+
+        IQueryable<InterviewEntity> Search();
     }
 }

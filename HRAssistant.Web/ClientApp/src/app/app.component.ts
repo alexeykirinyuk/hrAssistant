@@ -35,6 +35,10 @@ export class AppComponent {
     await this.navigateTo("vacancies");
   }
 
+  public async interviewList(): Promise<void> {
+    await this.navigateTo("interviews");
+  }
+
   private async navigateTo(page: string) {
     await this.sidenav.close();
     await this._router.navigate([page]);

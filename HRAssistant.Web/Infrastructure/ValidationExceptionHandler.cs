@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
+using LiteGuard;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
@@ -13,11 +14,15 @@ namespace HRAssistant.Web.Infrastructure
 
         public ValidationExceptionHandler(RequestDelegate next)
         {
+            Guard.AgainstNullArgument(nameof(next), next);
+
             _next = next;
         }
 
         public async Task Invoke(HttpContext httpContext)
         {
+            Guard.AgainstNullArgument(nameof(httpContext), httpContext);
+
             try
             {
                 await _next(httpContext);
