@@ -20,7 +20,6 @@ import { VacancyComponent } from './vacancy-management/vacancy/vacancy.component
 import { InterviewsComponent } from './interview-list/interviews/interviews.component';
 import { InterviewComponent } from './interview-list/interview/interview.component';
 import { ApiExceptionHandler, ValidationDialog } from './middleware/ApiExceptionHandler';
-import { ValidationComponent } from './validation/validation.component';
 
 @NgModule({
   declarations: [
