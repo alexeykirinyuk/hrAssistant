@@ -23,7 +23,7 @@ export class InterviewStore {
 @Component({
     selector: 'app-start',
     templateUrl: 'start.component.html',
-    styleUrls: ['start.component.html']
+    styleUrls: ['start.component.scss']
 })
 export class StartComponent implements OnInit {
     public vacancy: Vacancy;

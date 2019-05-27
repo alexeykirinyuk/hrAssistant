@@ -1,9 +1,12 @@
 <div *ngIf="!vacancy">Загрузка...</div>
-<div *ngIf="vacancy">
+<div *ngIf="vacancy" class="center">
     <div>
-        <div> Title: {{vacancy.title}} </div>
-        <div> Description: {{vacancy.description}} </div>
-        <div> Questions Count: {{vacancy.questionsCount}} </div>
+        <div>
+            <div>Приветствую тебя, дорогой кандидат на должность <strong>{{vacancy.title}}</strong>!</div>
+            <div>Предлагаем тебе пройти собеседование в нашу компанию Tinkoff Bank.</div>
+            <div>Тебе необходимо ответить на {{vacancy.questionsCount}} вопросов.</div>
+        </div>
+        <div> Описание итнервью: <strong>{{vacancy.description}}</strong> </div>
     </div>
     <mat-divider></mat-divider>
     <div>
@@ -12,29 +15,26 @@
                 <input matInput placeholder="Имя" [(ngModel)]="contact.firstName" required>
             </mat-form-field>
         </div>
-        <mat-divider></mat-divider>
         <div>
             <mat-form-field id="last-name-field" class="input-field">
                 <input matInput placeholder="Фамилия" [(ngModel)]="contact.lastName" required>
             </mat-form-field>
         </div>
-        <mat-divider></mat-divider>
         <div>
             <mat-form-field id="phone-field" class="input-field">
                 <input matInput placeholder="Номер телефона" [(ngModel)]="contact.phone" required>
             </mat-form-field>
         </div>
-        <mat-divider></mat-divider>
         <div>
             <mat-form-field id="email-field" class="input-field">
                 <input matInput placeholder="Почта" [(ngModel)]="contact.email" required>
             </mat-form-field>
         </div>
-        <mat-divider></mat-divider>
         <div>
             <mat-checkbox [(ngModel)]="contact.termsAgreed">Согласен <a routerLink="/terms">с условиями передачи данных
                     военкому и всё такоемана.</a></mat-checkbox>
         </div>
+        <mat-divider></mat-divider>
         <div>
             <button class="yellow-button submit" type="button" (click)="submit()" mat-button>Отправить</button>
         </div>

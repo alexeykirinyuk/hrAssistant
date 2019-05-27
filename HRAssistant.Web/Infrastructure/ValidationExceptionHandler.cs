@@ -31,7 +31,7 @@ namespace HRAssistant.Web.Infrastructure
             {
                 httpContext.Response.Clear();
 
-                httpContext.Response.StatusCode = 500;
+                httpContext.Response.StatusCode = 400;
                 httpContext.Response.ContentType = "application/json";
 
                 var errors = exception.Errors.Select(e => e.ErrorMessage);

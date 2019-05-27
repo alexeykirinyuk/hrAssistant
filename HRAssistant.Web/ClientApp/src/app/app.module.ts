@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -19,6 +19,8 @@ import { VacanciesComponent } from './vacancy-management/vacancies/vacancies.com
 import { VacancyComponent } from './vacancy-management/vacancy/vacancy.component';
 import { InterviewsComponent } from './interview-list/interviews/interviews.component';
 import { InterviewComponent } from './interview-list/interview/interview.component';
+import { ApiExceptionHandler, ValidationDialog } from './middleware/ApiExceptionHandler';
+import { ValidationComponent } from './validation/validation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { InterviewComponent } from './interview-list/interview/interview.compone
     VacanciesComponent,
     VacancyComponent,
     InterviewsComponent,
-    InterviewComponent
+    InterviewComponent,
+    ValidationDialog
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -75,7 +78,13 @@ import { InterviewComponent } from './interview-list/interview/interview.compone
       { path: 'interview/:id', component: InterviewComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ApiExceptionHandler
+    }
+  ],
+  entryComponents: [ValidationDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

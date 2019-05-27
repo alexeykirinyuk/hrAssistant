@@ -46,7 +46,8 @@ interface AnswerResult {
 
 @Component({
     selector: 'app-question',
-    templateUrl: 'question.component.html'
+    templateUrl: 'question.component.html',
+    styleUrls: ["question.component.scss"]
 })
 export class QuestionComponent implements OnInit {
     public question: Question;
@@ -78,10 +79,6 @@ export class QuestionComponent implements OnInit {
         return this._result.result ? "Правильно :)" : "Неправильно :(";
     }
 
-    public get hasNext(): boolean {
-        return this._result.hasQuestions;
-    }
-
     public async ngOnInit(): Promise<void> {
         this.loading = true;
 
@@ -94,6 +91,10 @@ export class QuestionComponent implements OnInit {
         this.question = startInterviewResult.question;
         this.questionIndex = startInterviewResult.index;
         this.totalQuestionsCount = startInterviewResult.totalCount;
+        this._result = null;
+        this.answer = null;
+        this.selectedOption = null;
+        this.selectedOptions = [];
 
         this.loading = false;
     }
@@ -120,14 +121,12 @@ export class QuestionComponent implements OnInit {
             .post<AnswerResult>(`${this._baseUrl}api/InterviewWorkflow/answer`, answer)
             .toPromise();
 
+        if (this._result.hasQuestions) {
+            await this.ngOnInit();
+        } else {
+            await this._router.navigate(["complete"]);
+        }
+
         this.loading = false;
-    }
-
-    public async next(): Promise<void> {
-        await this.ngOnInit();
-    }
-
-    public async complete(): Promise<void> {
-        await this._router.navigate(["complete"]);
     }
 }
